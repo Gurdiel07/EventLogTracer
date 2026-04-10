@@ -1,0 +1,31 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="EventLogTracer.App.App"
+             xmlns:local="using:EventLogTracer.App"
+             xmlns:converters="using:EventLogTracer.App.Converters"
+             RequestedThemeVariant="Dark">
+
+    <Application.Resources>
+        <!-- Converters -->
+        <converters:EventLevelToBackgroundConverter x:Key="LevelBgConverter"/>
+        <converters:EventLevelToForegroundConverter x:Key="LevelFgConverter"/>
+        <converters:BoolToStarConverter             x:Key="BoolToStarConverter"/>
+        <converters:FilterDescriptionConverter      x:Key="FilterDescriptionConverter"/>
+        <converters:NotificationTypeToColorConverter     x:Key="NotificationTypeToColorConverter"/>
+        <converters:AnomalySeverityToColorConverter      x:Key="AnomalySeverityToColorConverter"/>
+        <converters:CorrelationTypeToColorConverter      x:Key="CorrelationTypeToColorConverter"/>
+
+        <!-- Global accent colours -->
+        <SolidColorBrush x:Key="AccentBrush"   Color="#0078D4"/>
+        <SolidColorBrush x:Key="CriticalBrush" Color="#E81123"/>
+        <SolidColorBrush x:Key="ErrorBrush"    Color="#D13438"/>
+        <SolidColorBrush x:Key="WarningBrush"  Color="#FF8C00"/>
+        <SolidColorBrush x:Key="InfoBrush"     Color="#0078D4"/>
+        <SolidColorBrush x:Key="VerboseBrush"  Color="#767676"/>
+    </Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+
+</Application>
