@@ -41,7 +41,7 @@
 **Prerequisites:** [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 
 ```bash
-git clone https://github.com/YOUR_USER/EventLogTracer.git
+git clone https://github.com/Gurdiel07/EventLogTracer.git
 cd EventLogTracer
 dotnet restore EventLogTracer.sln
 dotnet run --project EventLogTracer.App
