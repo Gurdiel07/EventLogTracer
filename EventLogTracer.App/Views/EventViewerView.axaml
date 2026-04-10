@@ -1,6 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:EventLogTracer.App.ViewModels"
+             xmlns:core="using:EventLogTracer.Core.Models"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
@@ -76,8 +77,7 @@
              Row 2 — DataGrid  (x:CompileBindings off for row-level styles)
              ══════════════════════════════════════════════════ -->
         <Grid Grid.Row="2">
-            <DataGrid x:CompileBindings="False"
-                      ItemsSource="{Binding Events}"
+            <DataGrid ItemsSource="{Binding Events}"
                       SelectedItem="{Binding SelectedEvent}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
@@ -107,9 +107,9 @@
             <DataGrid.Columns>
 
                 <!-- Bookmark toggle -->
-                <DataGridTemplateColumn Header="★" Width="42" CanUserSort="False" CanUserResize="False">
+                <DataGridTemplateColumn Header="★" Width="42">
                     <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="core:EventEntry">
                             <Button Content="{Binding IsBookmarked, Converter={StaticResource BoolToStarConverter}}"
                                     Command="{Binding #Root.DataContext.ToggleBookmarkCommand}"
                                     CommandParameter="{Binding}"
@@ -125,24 +125,54 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Time"
-                                    Binding="{Binding TimeCreated, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}"
-                                    Width="165"/>
-                <DataGridTextColumn Header="Level"
-                                    Binding="{Binding Level}"
-                                    Width="95"/>
-                <DataGridTextColumn Header="Event ID"
-                                    Binding="{Binding EventId}"
-                                    Width="75"/>
-                <DataGridTextColumn Header="Source"
-                                    Binding="{Binding Source}"
-                                    Width="*"/>
-                <DataGridTextColumn Header="Log"
-                                    Binding="{Binding LogName}"
-                                    Width="115"/>
-                <DataGridTextColumn Header="Machine"
-                                    Binding="{Binding MachineName}"
-                                    Width="135"/>
+                <DataGridTemplateColumn Header="Time" Width="165">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="core:EventEntry">
+                            <TextBlock Text="{Binding TimeCreated, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}"
+                                       VerticalAlignment="Center" Padding="8,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Level" Width="95">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="core:EventEntry">
+                            <TextBlock Text="{Binding Level}"
+                                       VerticalAlignment="Center" Padding="8,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Event ID" Width="75">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="core:EventEntry">
+                            <TextBlock Text="{Binding EventId}"
+                                       VerticalAlignment="Center" Padding="8,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Source" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="core:EventEntry">
+                            <TextBlock Text="{Binding Source}"
+                                       VerticalAlignment="Center" Padding="8,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Log" Width="115">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="core:EventEntry">
+                            <TextBlock Text="{Binding LogName}"
+                                       VerticalAlignment="Center" Padding="8,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Machine" Width="135">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="core:EventEntry">
+                            <TextBlock Text="{Binding MachineName}"
+                                       VerticalAlignment="Center" Padding="8,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
             </DataGrid>
 

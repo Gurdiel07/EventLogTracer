@@ -1,92 +1,100 @@
-# Event Log Tracer
+# ⚡ Event Log Tracer
 
-A cross-platform desktop application for analyzing and monitoring **Windows Event Logs** in real-time.  
-Built with **.NET 8**, **Avalonia UI**, and **Clean Architecture**.
+**Real-time Windows Event Log analysis and monitoring application**
+
+![.NET](https://img.shields.io/badge/.NET-8.0-purple) ![Avalonia](https://img.shields.io/badge/Avalonia-11-blue) ![ML.NET](https://img.shields.io/badge/ML.NET-3.0-orange) ![License](https://img.shields.io/badge/license-MIT-green)
+
+---
+
+## Screenshots
+
+> Screenshots coming soon.
 
 ---
 
 ## Features
 
-- Real-time event monitoring (via Windows Event Log API or Mock reader for dev)
-- Advanced filtering: by level, source, log name, event ID, date range, text/regex
-- Bookmarks, tags, and comments on events
-- Alert rules with Desktop / Email / Webhook notifications
-- Event correlation (time-burst analysis)
-- Export to CSV, JSON, XML
-- ML.NET anomaly detection (scaffold ready, training pipeline TBD)
-- Dark-themed Avalonia UI, cross-platform (macOS / Windows / Linux)
+- 📊 **Real-time event monitoring** with live data feed and event rate display
+- 🔍 **Advanced search** with regex, boolean operators (AND/OR/NOT), field filters (`level:Error`, `source:Security`, `eventid:4625`), and saved queries
+- 📈 **Interactive dashboard** with pie, line, and bar charts powered by LiveCharts2
+- 📅 **Timeline visualization** with zoom, navigation, and level-based scatter lanes
+- 🔔 **Alert system** with desktop notifications, email placeholders, and webhook (HTTP POST) support
+- 🤖 **ML.NET anomaly detection** — frequency spike detection (IID), error-rate analysis, and unknown source detection
+- 🔗 **Event correlation engine** — burst detection, error cascades, authentication sequences, and service lifecycle grouping
+- 💾 **Export** to CSV (UTF-8 BOM, RFC 4180), JSON (indented, enum-as-string), and XML
+- 🏷️ **Tag management** and event bookmarking with comments
+- ⌨️ **Keyboard shortcuts** for power users
+- 🌙 **Dark theme** UI throughout
 
 ---
 
-## Solution Structure
+## Quick Start
+
+### Option A: Download & Run *(no SDK required)*
+
+1. Go to [Releases](../../releases)
+2. Download `EventLogTracer-win-x64.zip`
+3. Extract the archive and run `EventLogTracer.App.exe`
+
+### Option B: Build from Source
+
+**Prerequisites:** [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+
+```bash
+git clone https://github.com/YOUR_USER/EventLogTracer.git
+cd EventLogTracer
+dotnet restore EventLogTracer.sln
+dotnet run --project EventLogTracer.App
+```
+
+---
+
+## Usage
+
+1. **Start Monitoring** — click the *Start Monitoring* button in the status bar (or press `Ctrl+M`) to begin receiving live events from the mock data source.
+2. **Navigate views** — use `Ctrl+1` through `Ctrl+6` or the left sidebar.
+3. **Search** — switch to the *Search* view and write queries like `level:Error AND source:"Security"` or `/failed.*logon/`.
+4. **Configure alerts** — open the *Alerts* view, click *+ New Rule*, and choose Desktop, Email, or Webhook delivery.
+5. **Export data** — go to *Settings → Export Events*, pick a format and date range, then click *Export*.
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+1` … `Ctrl+6` | Navigate to Dashboard / Event Viewer / Timeline / Alerts / Search / Settings |
+| `Ctrl+M` | Toggle monitoring on / off |
+| `Ctrl+F` | Focus the search / filter box in the current view |
+| `Ctrl+E` | Quick-export visible Event Viewer events to CSV |
+| `F5` | Refresh the current page |
+| `Esc` | Clear selection or close edit panels |
+
+### Search Syntax
+
+| Syntax | Example | Description |
+|--------|---------|-------------|
+| Simple text | `svchost` | Matches `Source` or `Message` |
+| Regex | `/failed.*logon/` | Regex applied to `Message` |
+| Field filter | `level:Error` | Exact field match |
+| Boolean | `level:Error AND source:Security` | Logical operators |
+| Phrase | `"access denied"` | Exact phrase |
+| Grouping | `(level:Critical OR level:Error) AND NOT source:WMI` | Precedence via parens |
+
+Available field names: `level`, `source`, `eventid`, `log`, `machine`
+
+---
+
+## Architecture
 
 ```
 EventLogTracer.sln
-├── EventLogTracer.App          — Avalonia UI (Views, ViewModels, DI bootstrap)
-├── EventLogTracer.Core         — Domain models, interfaces, enums
-├── EventLogTracer.Infrastructure — EF Core/SQLite, MockEventLogReader, repositories, services
-├── EventLogTracer.ML           — ML.NET anomaly detection scaffold
-└── EventLogTracer.Tests        — xUnit tests (FluentAssertions + Moq)
+├── EventLogTracer.Core            # Domain models, interfaces, enums
+├── EventLogTracer.Infrastructure  # EF Core + SQLite, repositories, services
+├── EventLogTracer.ML              # ML.NET anomaly detection
+├── EventLogTracer.App             # Avalonia UI — views, view-models, converters
+└── EventLogTracer.Tests           # xUnit unit tests
 ```
 
----
-
-## Prerequisites
-
-| Tool | Version |
-|------|---------|
-| [.NET SDK](https://dotnet.microsoft.com/download) | 8.0 or later |
-| Avalonia templates (optional) | `dotnet new install Avalonia.Templates` |
-
----
-
-## Build & Run
-
-```bash
-# Clone / open the workspace
-cd "Event Log Tracer"
-
-# Restore all NuGet packages
-dotnet restore EventLogTracer.sln
-
-# Build (Debug)
-dotnet build EventLogTracer.sln
-
-# Run the desktop app
-dotnet run --project EventLogTracer.App/EventLogTracer.App.csproj
-
-# Run tests
-dotnet test EventLogTracer.Tests/EventLogTracer.Tests.csproj --verbosity normal
-```
-
----
-
-## Database Migrations
-
-The app uses **EF Core + SQLite**. To apply the initial migration:
-
-```bash
-# Install EF tools (once)
-dotnet tool install --global dotnet-ef
-
-# Create initial migration
-dotnet ef migrations add InitialCreate \
-    --project EventLogTracer.Infrastructure \
-    --startup-project EventLogTracer.App
-
-# Apply migration (creates eventlogtracer.db)
-dotnet ef database update \
-    --project EventLogTracer.Infrastructure \
-    --startup-project EventLogTracer.App
-```
-
----
-
-## Development Notes
-
-- **MockEventLogReader** (in `EventLogTracer.Infrastructure/Services/`) generates realistic fake events every 1–3 seconds. Toggle it in Settings → "Use Mock Event Reader".
-- On **Windows**, swap `MockEventLogReader` with a `WindowsEventLogReader` implementation (not yet implemented) that calls `System.Diagnostics.Eventing.Reader`.
-- **ML.NET** packages are included. The `AnomalyDetector` class in `EventLogTracer.ML` is a scaffold — implement the SrCnn / IID Spike Detection pipeline there.
+The project follows **Clean Architecture**: `Core` has zero dependencies; `Infrastructure` and `ML` depend only on `Core`; `App` depends on all layers and wires DI.
 
 ---
 
@@ -94,17 +102,16 @@ dotnet ef database update \
 
 | Layer | Technology |
 |-------|-----------|
-| UI | Avalonia UI 11.x + FluentTheme (Dark) |
-| MVVM | CommunityToolkit.Mvvm 8.x |
-| ORM | Entity Framework Core 8 + SQLite |
-| Charts | LiveChartsCore.SkiaSharpView.Avalonia |
-| ML | ML.NET 3.x |
-| Logging | Serilog (Console + rolling File sinks) |
-| Tests | xUnit + FluentAssertions + Moq |
-| DI | Microsoft.Extensions.DependencyInjection |
+| Language / Runtime | C# 12 · .NET 8 |
+| UI Framework | [Avalonia UI 11](https://avaloniaui.net/) |
+| MVVM | [CommunityToolkit.Mvvm](https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/) |
+| Database | Entity Framework Core 8 + SQLite |
+| Charts | [LiveCharts2](https://livecharts.dev/) (SkiaSharp) |
+| Machine Learning | [ML.NET 3](https://dotnet.microsoft.com/apps/machinelearning-ai/ml-dotnet) (TimeSeries) |
+| Logging | [Serilog](https://serilog.net/) |
 
 ---
 
 ## License
 
-MIT
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
