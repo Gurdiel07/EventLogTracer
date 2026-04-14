@@ -34,46 +34,47 @@
         </WrapPanel>
 
         <Grid Grid.Row="2">
-            <Border CornerRadius="12" ClipToBounds="True" BorderBrush="#DFE4EB" BorderThickness="1" Background="#FFFFFF">
-                <DataGrid ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent}"
-                          AutoGenerateColumns="False" IsReadOnly="True"
-                          CanUserResizeColumns="True" CanUserSortColumns="True"
-                          GridLinesVisibility="Horizontal" HeadersVisibility="Column"
-                          Background="#FFFFFF" Foreground="#111827"
-                          BorderThickness="0" CornerRadius="0">
-                    <DataGrid.Styles>
-                        <Style Selector="DataGridCell">
-                            <Setter Property="Foreground" Value="#111827"/>
-                        </Style>
-                        <Style Selector="DataGridRow">
-                            <Setter Property="Background" Value="{Binding Level, Converter={StaticResource LevelBgConverter}}"/>
-                            <Setter Property="Foreground" Value="{Binding Level, Converter={StaticResource LevelFgConverter}}"/>
-                            <Setter Property="MinHeight" Value="30"/>
-                        </Style>
-                        <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
-                            <Setter Property="Opacity" Value="0.6"/>
-                        </Style>
-                    </DataGrid.Styles>
-                    <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="★" Width="42">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate x:DataType="core:EventEntry">
-                                    <Button Content="{Binding IsBookmarked, Converter={StaticResource BoolToStarConverter}}"
-                                            Command="{Binding #Root.DataContext.ToggleBookmarkCommand}" CommandParameter="{Binding}"
-                                            Background="Transparent" Foreground="#D97706" BorderThickness="0"
-                                            Padding="4,2" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Time" Width="165"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding TimeCreated, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}" Foreground="#111827" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Level" Width="95"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding Level}" Foreground="#111827" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Event ID" Width="75"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding EventId}" Foreground="#111827" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Source" Width="*"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding Source}" Foreground="#111827" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Log" Width="115"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding LogName}" Foreground="#111827" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Machine" Width="135"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding MachineName}" Foreground="#111827" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Border>
+            <DataGrid ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent}"
+                      AutoGenerateColumns="False" IsReadOnly="True"
+                      CanUserResizeColumns="True" CanUserSortColumns="True"
+                      GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                      Background="#FFFFFF" Foreground="#111827"
+                      BorderBrush="#DFE4EB" BorderThickness="1">
+                <DataGrid.Styles>
+                    <Style Selector="DataGridCell TextBlock">
+                        <Setter Property="Foreground" Value="#111827"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                    <Style Selector="DataGridColumnHeader TextBlock">
+                        <Setter Property="Foreground" Value="#6B7280"/>
+                    </Style>
+                    <Style Selector="DataGridRow">
+                        <Setter Property="MinHeight" Value="36"/>
+                    </Style>
+                    <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
+                        <Setter Property="Fill" Value="#F0F4FF"/>
+                        <Setter Property="Opacity" Value="1"/>
+                    </Style>
+                </DataGrid.Styles>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="★" Width="42">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate x:DataType="core:EventEntry">
+                                <Button Content="{Binding IsBookmarked, Converter={StaticResource BoolToStarConverter}}"
+                                        Command="{Binding #Root.DataContext.ToggleBookmarkCommand}" CommandParameter="{Binding}"
+                                        Background="Transparent" Foreground="#D97706" BorderThickness="0"
+                                        Padding="4,2" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Time" Width="165" Binding="{Binding TimeCreated, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}"/>
+                    <DataGridTextColumn Header="Level" Width="95" Binding="{Binding Level}"/>
+                    <DataGridTextColumn Header="Event ID" Width="80" Binding="{Binding EventId}"/>
+                    <DataGridTextColumn Header="Source" Width="*" Binding="{Binding Source}"/>
+                    <DataGridTextColumn Header="Log" Width="115" Binding="{Binding LogName}"/>
+                    <DataGridTextColumn Header="Machine" Width="135" Binding="{Binding MachineName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
             <Border Background="#88F2F4F7" CornerRadius="6" IsVisible="{Binding IsLoading}">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
                     <ProgressBar IsIndeterminate="True" Width="180" Height="3" Background="Transparent"/>

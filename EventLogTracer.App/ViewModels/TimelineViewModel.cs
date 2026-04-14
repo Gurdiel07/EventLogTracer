@@ -49,9 +49,9 @@ public partial class TimelineViewModel : ViewModelBase
     private static readonly SKColor WarningColor = Hex("#FF8C00");
     private static readonly SKColor InformationColor = Hex("#0078D4");
     private static readonly SKColor VerboseColor = Hex("#767676");
-    private static readonly SKColor AxisTextColor = Hex("#999999");
-    private static readonly SKColor GridColor = Hex("#333333");
-    private static readonly SKColor LabelColor = Hex("#CCCCCC");
+    private static readonly SKColor AxisTextColor = Hex("#6B7280");
+    private static readonly SKColor GridColor = Hex("#E5E7EB");
+    private static readonly SKColor LabelColor = Hex("#374151");
 
     [ObservableProperty]
     private ObservableCollection<TimelineEventItem> _timelineEvents = [];
@@ -102,7 +102,11 @@ public partial class TimelineViewModel : ViewModelBase
     {
         _serviceProvider = serviceProvider;
         ConfigureAxes();
-        _ = LoadTimelineAsync();
+        _ = Task.Run(async () =>
+        {
+            try { await LoadTimelineAsync(); }
+            catch (Exception ex) { Log.Error(ex, "Timeline initial load failed"); }
+        });
     }
 
     partial void OnSelectedLevelChanged(string value) => _ = LoadTimelineAsync();
@@ -326,7 +330,11 @@ public partial class TimelineViewModel : ViewModelBase
             GeometrySize = 10,
             Fill = new SolidColorPaint(color),
             Stroke = new SolidColorPaint(color) { StrokeThickness = 1 },
-            Mapping = (model, index) => new Coordinate(model.LevelY, model.Time.Ticks)
+            Mapping = (model, index) =>
+            {
+                var ticks = (double)model.Time.Ticks;
+                return new Coordinate(model.LevelY, ticks);
+            }
         };
     }
 
@@ -339,7 +347,14 @@ public partial class TimelineViewModel : ViewModelBase
         [
             new Axis
             {
-                Labeler = value => new DateTime((long)value, DateTimeKind.Utc).ToLocalTime().ToString("MMM dd HH:mm"),
+                Labeler = value =>
+                {
+                    var ticks = (long)value;
+                    if (ticks < DateTime.MinValue.Ticks || ticks > DateTime.MaxValue.Ticks)
+                        return string.Empty;
+                    try { return new DateTime(ticks, DateTimeKind.Utc).ToLocalTime().ToString("MMM dd HH:mm"); }
+                    catch { return string.Empty; }
+                },
                 MinLimit = VisibleRangeStart.ToUniversalTime().Ticks,
                 MaxLimit = VisibleRangeEnd.ToUniversalTime().Ticks,
                 MinStep = minStep,
