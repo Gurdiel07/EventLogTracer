@@ -6,7 +6,6 @@
              RequestedThemeVariant="Dark">
 
     <Application.Resources>
-        <!-- Converters -->
         <converters:EventLevelToBackgroundConverter x:Key="LevelBgConverter"/>
         <converters:EventLevelToForegroundConverter x:Key="LevelFgConverter"/>
         <converters:BoolToStarConverter             x:Key="BoolToStarConverter"/>
@@ -15,7 +14,6 @@
         <converters:AnomalySeverityToColorConverter      x:Key="AnomalySeverityToColorConverter"/>
         <converters:CorrelationTypeToColorConverter      x:Key="CorrelationTypeToColorConverter"/>
 
-        <!-- Global accent colours -->
         <SolidColorBrush x:Key="AccentBrush"   Color="#3b82f6"/>
         <SolidColorBrush x:Key="CriticalBrush" Color="#E81123"/>
         <SolidColorBrush x:Key="ErrorBrush"    Color="#D13438"/>
@@ -26,6 +24,22 @@
 
     <Application.Styles>
         <FluentTheme />
+
+        <!-- DataGrid column headers: uppercase, small, tertiary, wide spacing -->
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="Background" Value="#080C16"/>
+            <Setter Property="Foreground" Value="#4A5670"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="BorderBrush" Value="#1A2744"/>
+            <Setter Property="SeparatorBrush" Value="#1A2744"/>
+        </Style>
+
+        <Style Selector="DataGridRow">
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
     </Application.Styles>
 
 </Application>

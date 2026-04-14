@@ -12,17 +12,20 @@
         MinWidth="900" MinHeight="600"
         WindowStartupLocation="CenterScreen"
         Background="#0C111B"
+        FontFamily="Inter"
         KeyDown="OnWindowKeyDown">
 
     <Window.Styles>
         <Style Selector="Button.nav-btn">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#E8E9ED"/>
-            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="Padding" Value="16,14"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="Margin" Value="4,2"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
         </Style>
         <Style Selector="Button.nav-btn:pointerover /template/ ContentPresenter">
             <Setter Property="Background" Value="#131A28"/>
@@ -42,9 +45,9 @@
 
         <Grid Grid.Row="0" ColumnDefinitions="220,*">
 
-            <!-- ── Sidebar with gradient ── -->
+            <!-- Sidebar with gradient -->
             <Border Grid.Column="0"
-                    BorderBrush="#1E3A5F"
+                    BorderBrush="#1E2D4A"
                     BorderThickness="0,0,1,0">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -59,7 +62,8 @@
                         <TextBlock Text="⚡ Event Log Tracer"
                                    FontSize="16"
                                    FontWeight="SemiBold"
-                                   Foreground="#F0F4FF"/>
+                                   Foreground="#F0F4FF"
+                                   LetterSpacing="-0.5"/>
                         <TextBlock Text="Real-time Windows Event Analysis"
                                    FontSize="11"
                                    Foreground="#4A5670"
@@ -85,13 +89,16 @@
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <TextBlock Text="📋" FontSize="14"/>
                                 <TextBlock Text="Event Viewer"/>
-                                <Border Background="#1A2744"
-                                        CornerRadius="9"
-                                        Padding="6,1"
+                                <Border Background="#0A1428"
+                                        CornerRadius="100"
+                                        Padding="8,2"
+                                        BorderBrush="#1A2D5A"
+                                        BorderThickness="1"
                                         VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding TotalEventCount, StringFormat='[{0}]'}"
-                                               FontSize="10"
-                                               FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding TotalEventCount}"
+                                               FontSize="11"
+                                               FontWeight="SemiBold"
+                                               Foreground="#3b82f6"/>
                                 </Border>
                             </StackPanel>
                         </Button>
@@ -129,7 +136,7 @@
                     </StackPanel>
 
                     <StackPanel DockPanel.Dock="Bottom" Margin="8,0,8,12">
-                        <Separator Margin="4,8" Background="#1E3A5F"/>
+                        <Separator Margin="4,8" Background="#1E2D4A"/>
                         <Button Classes="nav-btn"
                                 Classes.active="{Binding IsSettingsSelected}"
                                 Command="{Binding NavigateToCommand}"
@@ -144,7 +151,6 @@
                 </DockPanel>
             </Border>
 
-            <!-- ── Content area ── -->
             <Border Grid.Column="1" Background="#0C111B">
                 <ContentControl Content="{Binding CurrentPage}">
                     <ContentControl.DataTemplates>
@@ -172,18 +178,18 @@
 
         </Grid>
 
-        <!-- ═══ Status bar ═══ -->
+        <!-- Status bar — minimal -->
         <Border Grid.Row="1"
                 Background="#080C16"
-                BorderBrush="#1E3A5F"
+                BorderBrush="#1E2D4A"
                 BorderThickness="0,1,0,0"
-                Padding="16,6">
+                Padding="16,5">
             <Grid ColumnDefinitions="Auto,*,Auto,Auto">
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8">
-                    <Panel Width="8" Height="8" VerticalAlignment="Center">
-                        <Ellipse Width="8" Height="8" Fill="#00C851" IsVisible="{Binding IsMonitoring}"/>
-                        <Ellipse Width="8" Height="8" Fill="#FF4444" IsVisible="{Binding !IsMonitoring}"/>
+                    <Panel Width="7" Height="7" VerticalAlignment="Center">
+                        <Ellipse Width="7" Height="7" Fill="#00C851" IsVisible="{Binding IsMonitoring}"/>
+                        <Ellipse Width="7" Height="7" Fill="#FF4444" IsVisible="{Binding !IsMonitoring}"/>
                     </Panel>
                     <TextBlock Text="{Binding StatusMessage}"
                                Foreground="#8899B4"
@@ -194,7 +200,7 @@
                 <TextBlock Grid.Column="1"
                            Text="{Binding LastEventInfo}"
                            Foreground="#4A5670"
-                           FontSize="11"
+                           FontSize="12"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
 
@@ -210,9 +216,10 @@
                 <Button Grid.Column="3"
                         Content="{Binding ToggleButtonText}"
                         Command="{Binding ToggleMonitoringCommand}"
-                        Padding="12,4"
+                        Padding="18,5"
                         FontSize="12"
-                        CornerRadius="4"/>
+                        FontWeight="Medium"
+                        CornerRadius="8"/>
 
             </Grid>
         </Border>
