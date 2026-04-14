@@ -14,10 +14,10 @@ public class AnomalySeverityToColorConverter : IValueConverter
 
         return severity switch
         {
-            AnomalySeverity.Critical => new SolidColorBrush(Color.Parse("#E81123")),
-            AnomalySeverity.High     => new SolidColorBrush(Color.Parse("#D83B01")),
-            AnomalySeverity.Medium   => new SolidColorBrush(Color.Parse("#FF8C00")),
-            AnomalySeverity.Low      => new SolidColorBrush(Color.Parse("#3b82f6")),
+            AnomalySeverity.Critical => new SolidColorBrush(Color.Parse("#DC2626")),
+            AnomalySeverity.High     => new SolidColorBrush(Color.Parse("#EA580C")),
+            AnomalySeverity.Medium   => new SolidColorBrush(Color.Parse("#D97706")),
+            AnomalySeverity.Low      => new SolidColorBrush(Color.Parse("#1160AD")),
             _                        => new SolidColorBrush(Colors.Gray)
         };
     }

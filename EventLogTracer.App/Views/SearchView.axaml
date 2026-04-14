@@ -4,8 +4,7 @@
              xmlns:core="using:EventLogTracer.Core.Models"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             FontFamily="Inter"
+             mc:Ignorable="d" FontFamily="Inter"
              x:Class="EventLogTracer.App.Views.SearchView"
              x:DataType="vm:SearchViewModel"
              x:Name="SearchViewRoot">
@@ -17,54 +16,42 @@
             <Setter Property="CornerRadius" Value="12"/>
         </Style>
         <Style Selector="Button.query-load:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background"   Value="#262C44"/>
+            <Setter Property="Background"   Value="#F8FAFC"/>
             <Setter Property="CornerRadius" Value="12"/>
         </Style>
-        <Style Selector="Button.query-load">
-            <Setter Property="Foreground" Value="#E8E9F0"/>
-        </Style>
+        <Style Selector="Button.query-load"><Setter Property="Foreground" Value="#111827"/></Style>
     </UserControl.Styles>
 
     <Grid ColumnDefinitions="220,*">
-
-        <!-- Saved Queries Sidebar -->
-        <Border Grid.Column="0" Background="#0F1320" BorderBrush="#3D4563" BorderThickness="0,0,1,0">
+        <Border Grid.Column="0" Background="#F8FAFC" BorderBrush="#DFE4EB" BorderThickness="0,0,1,0">
             <DockPanel>
-                <Border DockPanel.Dock="Top" Padding="14,14,12,12" BorderBrush="#3D4563" BorderThickness="0,0,0,1">
+                <Border DockPanel.Dock="Top" Padding="14,14,12,12" BorderBrush="#DFE4EB" BorderThickness="0,0,0,1">
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <TextBlock Text="🔖" FontSize="13" VerticalAlignment="Center"/>
-                        <TextBlock Text="Saved Queries" FontSize="13" FontWeight="SemiBold" Foreground="#E8E9F0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Saved Queries" FontSize="13" FontWeight="SemiBold" Foreground="#111827" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Border>
-                <TextBlock DockPanel.Dock="Top" Text="No saved queries yet"
-                           Foreground="#767C96" FontSize="12" HorizontalAlignment="Center"
-                           Margin="16,28,16,0" IsVisible="{Binding NoSavedQueries}"/>
+                <TextBlock DockPanel.Dock="Top" Text="No saved queries yet" Foreground="#6B7280" FontSize="12"
+                           HorizontalAlignment="Center" Margin="16,28,16,0" IsVisible="{Binding NoSavedQueries}"/>
                 <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" IsVisible="{Binding HasSavedQueries}">
-                    <ItemsControl x:CompileBindings="False" ItemsSource="{Binding SavedQueries}" Padding="8,8,8,8">
+                    <ItemsControl x:CompileBindings="False" ItemsSource="{Binding SavedQueries}" Padding="8">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,0,0,5">
-                                    <Border Background="#1D2338" CornerRadius="12" BorderBrush="#3D4563" BorderThickness="1">
-                                        <Button Classes="query-load"
-                                                Command="{Binding DataContext.LoadSavedQueryCommand, ElementName=SearchViewRoot}"
-                                                CommandParameter="{Binding}"
-                                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
+                                    <Border Background="#FFFFFF" CornerRadius="12" BorderBrush="#DFE4EB" BorderThickness="1">
+                                        <Button Classes="query-load" Command="{Binding DataContext.LoadSavedQueryCommand, ElementName=SearchViewRoot}"
+                                                CommandParameter="{Binding}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left"
                                                 BorderThickness="0" Padding="10,8,28,8" Cursor="Hand">
                                             <StackPanel Spacing="2">
-                                                <TextBlock Text="{Binding Name}" FontWeight="Medium" Foreground="#E8E9F0"
-                                                           FontSize="13" TextTrimming="CharacterEllipsis"/>
-                                                <TextBlock Text="{Binding QueryExpression}" Foreground="#767C96"
-                                                           FontSize="12" TextTrimming="CharacterEllipsis" MaxLines="1"/>
-                                                <TextBlock Text="{Binding UseCount, StringFormat='Used {0}×'}"
-                                                           Foreground="#585E72" FontSize="11"/>
+                                                <TextBlock Text="{Binding Name}" FontWeight="Medium" Foreground="#111827" FontSize="13" TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Text="{Binding QueryExpression}" Foreground="#6B7280" FontSize="12" TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                                <TextBlock Text="{Binding UseCount, StringFormat='Used {0}×'}" Foreground="#9CA3AF" FontSize="11"/>
                                             </StackPanel>
                                         </Button>
                                     </Border>
                                     <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,4,0"
-                                            Command="{Binding DataContext.DeleteSavedQueryCommand, ElementName=SearchViewRoot}"
-                                            CommandParameter="{Binding}" Content="✕"
-                                            Background="Transparent" BorderThickness="0" Foreground="#767C96"
-                                            FontSize="11" Padding="4,2" Cursor="Hand" ToolTip.Tip="Delete query"/>
+                                            Command="{Binding DataContext.DeleteSavedQueryCommand, ElementName=SearchViewRoot}" CommandParameter="{Binding}"
+                                            Content="✕" Background="Transparent" BorderThickness="0" Foreground="#9CA3AF" FontSize="11" Padding="4,2" Cursor="Hand"/>
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -73,259 +60,97 @@
             </DockPanel>
         </Border>
 
-        <!-- Main content -->
         <Grid Grid.Column="1" RowDefinitions="Auto,Auto,Auto,*" Margin="24,24,24,12">
-
             <StackPanel Grid.Row="0" Margin="0,0,0,16">
-                <TextBlock Text="Search" FontSize="28" FontWeight="Bold" LetterSpacing="-1" Foreground="#E8E9F0"/>
-                <TextBlock Text="Advanced query syntax with regex, field filters, and boolean operators"
-                           FontSize="14" Foreground="#767C96" Margin="0,4,0,0"/>
+                <TextBlock Text="Search" FontSize="28" FontWeight="Bold" LetterSpacing="-1" Foreground="#111827"/>
+                <TextBlock Text="Advanced query syntax with regex, field filters, and boolean operators" FontSize="14" Foreground="#6B7280" Margin="0,4,0,0"/>
             </StackPanel>
-
             <StackPanel Grid.Row="1" Spacing="5" Margin="0,0,0,12">
                 <Grid ColumnDefinitions="*,28,Auto,Auto,Auto">
-                    <TextBox Grid.Column="0" x:Name="SearchQueryTextBox"
-                             Text="{Binding QueryText}"
-                             Watermark="Search events… (e.g. level:Error AND /failed.*logon/)"
-                             FontSize="14" Padding="12,10" AcceptsReturn="False"/>
+                    <TextBox Grid.Column="0" x:Name="SearchQueryTextBox" Text="{Binding QueryText}" Watermark="Search events… (e.g. level:Error AND /failed.*logon/)" FontSize="14" Padding="12,10" AcceptsReturn="False"/>
                     <Panel Grid.Column="1" VerticalAlignment="Center" Margin="6,0,4,0">
-                        <TextBlock Text="✓" Foreground="#22C55E" FontSize="17" FontWeight="Bold"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   IsVisible="{Binding IsQueryValid}"/>
-                        <TextBlock Text="✗" Foreground="#E81123" FontSize="17" FontWeight="Bold"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   IsVisible="{Binding ValidationMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        <TextBlock Text="✓" Foreground="#16A34A" FontSize="17" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding IsQueryValid}"/>
+                        <TextBlock Text="✗" Foreground="#DC2626" FontSize="17" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding ValidationMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
                     </Panel>
-                    <Button Grid.Column="2" Classes="btn-primary" Content="Search"
-                            Command="{Binding ExecuteSearchCommand}" IsEnabled="{Binding IsQueryValid}"
-                            Padding="18,10" Margin="4,0,0,0"/>
-                    <TextBox Grid.Column="3" Text="{Binding SaveQueryName}" Watermark="Query name…"
-                             Width="140" FontSize="13" Padding="8,10" Margin="6,0,0,0"/>
-                    <Button Grid.Column="4" Content="Save"
-                            Command="{Binding SaveQueryCommand}"
-                            IsEnabled="{Binding QueryText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
-                            Padding="14,10" Margin="4,0,0,0"/>
+                    <Button Grid.Column="2" Classes="btn-primary" Content="Search" Command="{Binding ExecuteSearchCommand}" IsEnabled="{Binding IsQueryValid}" Padding="18,10" Margin="4,0,0,0"/>
+                    <TextBox Grid.Column="3" Text="{Binding SaveQueryName}" Watermark="Query name…" Width="140" FontSize="13" Padding="8,10" Margin="6,0,0,0"/>
+                    <Button Grid.Column="4" Content="Save" Command="{Binding SaveQueryCommand}" IsEnabled="{Binding QueryText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" Padding="14,10" Margin="4,0,0,0"/>
                 </Grid>
-                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsSearching}"
-                             Height="2" Background="Transparent" Margin="0,2,0,0"/>
+                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsSearching}" Height="2" Background="Transparent" Margin="0,2,0,0"/>
                 <Grid ColumnDefinitions="*,Auto">
-                    <TextBlock Grid.Column="0" Text="{Binding ValidationMessage}" Foreground="#E81123"
-                               FontSize="12" Margin="2,0,0,0"
-                               IsVisible="{Binding ValidationMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
-                    <TextBlock Grid.Column="1" Text="{Binding SearchDuration}" Foreground="#767C96" FontSize="12"
-                               IsVisible="{Binding SearchDuration, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                    <TextBlock Grid.Column="0" Text="{Binding ValidationMessage}" Foreground="#DC2626" FontSize="12" Margin="2,0,0,0" IsVisible="{Binding ValidationMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                    <TextBlock Grid.Column="1" Text="{Binding SearchDuration}" Foreground="#6B7280" FontSize="12" IsVisible="{Binding SearchDuration, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
                 </Grid>
             </StackPanel>
-
             <WrapPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
-                <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,12,4">
-                    <TextBlock Text="From:" Foreground="#767C96" FontSize="12" VerticalAlignment="Center"/>
-                    <CalendarDatePicker SelectedDate="{Binding DateFrom}" Watermark="Start date" Width="140"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,12,4">
-                    <TextBlock Text="To:" Foreground="#767C96" FontSize="12" VerticalAlignment="Center"/>
-                    <CalendarDatePicker SelectedDate="{Binding DateTo}" Watermark="End date" Width="140"/>
-                </StackPanel>
-                <Border CornerRadius="100" Background="#1A2744" BorderBrush="#3B82F6" BorderThickness="1"
-                        Padding="10,4" Margin="0,0,10,4" VerticalAlignment="Center" IsVisible="{Binding HasSearched}">
-                    <TextBlock Text="{Binding ResultCount, StringFormat='{}{0} results'}"
-                               Foreground="#60A5FA" FontSize="12" FontWeight="SemiBold"/>
+                <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,12,4"><TextBlock Text="From:" Foreground="#6B7280" FontSize="12" VerticalAlignment="Center"/><CalendarDatePicker SelectedDate="{Binding DateFrom}" Watermark="Start date" Width="140"/></StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,12,4"><TextBlock Text="To:" Foreground="#6B7280" FontSize="12" VerticalAlignment="Center"/><CalendarDatePicker SelectedDate="{Binding DateTo}" Watermark="End date" Width="140"/></StackPanel>
+                <Border CornerRadius="100" Background="#EAF2FB" BorderBrush="#3B82F6" BorderThickness="1" Padding="10,4" Margin="0,0,10,4" VerticalAlignment="Center" IsVisible="{Binding HasSearched}">
+                    <TextBlock Text="{Binding ResultCount, StringFormat='{}{0} results'}" Foreground="#1160AD" FontSize="12" FontWeight="SemiBold"/>
                 </Border>
                 <Button Content="Clear" Command="{Binding ClearSearchCommand}" Padding="12,6" Margin="0,0,0,4" VerticalAlignment="Center"/>
             </WrapPanel>
 
             <Grid Grid.Row="3" RowDefinitions="*,Auto">
-
                 <Panel Grid.Row="0">
                     <DataGrid ItemsSource="{Binding SearchResults}" SelectedItem="{Binding SelectedResult, Mode=TwoWay}"
                               AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeColumns="True" CanUserSortColumns="True"
                               GridLinesVisibility="Horizontal" HeadersVisibility="Column" CornerRadius="12">
                         <DataGrid.Styles>
-                            <Style Selector="DataGridRow">
-                                <Setter Property="Background" Value="{Binding Level, Converter={StaticResource LevelBgConverter}}"/>
-                                <Setter Property="Foreground" Value="{Binding Level, Converter={StaticResource LevelFgConverter}}"/>
-                                <Setter Property="MinHeight" Value="30"/>
-                            </Style>
-                            <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
-                                <Setter Property="Opacity" Value="0.6"/>
-                            </Style>
+                            <Style Selector="DataGridRow"><Setter Property="Background" Value="{Binding Level, Converter={StaticResource LevelBgConverter}}"/><Setter Property="Foreground" Value="{Binding Level, Converter={StaticResource LevelFgConverter}}"/><Setter Property="MinHeight" Value="30"/></Style>
+                            <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle"><Setter Property="Opacity" Value="0.6"/></Style>
                         </DataGrid.Styles>
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="★" Width="42">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate x:DataType="core:EventEntry">
-                                        <Button Content="{Binding IsBookmarked, Converter={StaticResource BoolToStarConverter}}"
-                                                Command="{Binding #SearchViewRoot.DataContext.ToggleBookmarkCommand}" CommandParameter="{Binding}"
-                                                Background="Transparent" Foreground="#FFD700" BorderThickness="0"
-                                                Padding="4,2" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Time" Width="165">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate x:DataType="core:EventEntry">
-                                        <TextBlock Text="{Binding TimeCreated, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}" VerticalAlignment="Center" Padding="8,0"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Level" Width="95">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate x:DataType="core:EventEntry">
-                                        <TextBlock Text="{Binding Level}" VerticalAlignment="Center" Padding="8,0"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Event ID" Width="75">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate x:DataType="core:EventEntry">
-                                        <TextBlock Text="{Binding EventId}" VerticalAlignment="Center" Padding="8,0"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Source" Width="*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate x:DataType="core:EventEntry">
-                                        <TextBlock Text="{Binding Source}" VerticalAlignment="Center" Padding="8,0"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Log" Width="115">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate x:DataType="core:EventEntry">
-                                        <TextBlock Text="{Binding LogName}" VerticalAlignment="Center" Padding="8,0"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Machine" Width="135">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate x:DataType="core:EventEntry">
-                                        <TextBlock Text="{Binding MachineName}" VerticalAlignment="Center" Padding="8,0"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="★" Width="42"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><Button Content="{Binding IsBookmarked, Converter={StaticResource BoolToStarConverter}}" Command="{Binding #SearchViewRoot.DataContext.ToggleBookmarkCommand}" CommandParameter="{Binding}" Background="Transparent" Foreground="#D97706" BorderThickness="0" Padding="4,2" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Time" Width="165"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding TimeCreated, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Level" Width="95"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding Level}" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Event ID" Width="75"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding EventId}" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Source" Width="*"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding Source}" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Log" Width="115"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding LogName}" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Machine" Width="135"><DataGridTemplateColumn.CellTemplate><DataTemplate x:DataType="core:EventEntry"><TextBlock Text="{Binding MachineName}" VerticalAlignment="Center" Padding="8,0"/></DataTemplate></DataGridTemplateColumn.CellTemplate></DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
-                                Spacing="8" IsVisible="{Binding ShowNoResults}" Margin="0,32,0,32">
-                        <TextBlock Text="🔍" FontSize="36" HorizontalAlignment="Center" Foreground="#585E72"/>
-                        <TextBlock Text="No results found for your query." FontSize="13" Foreground="#767C96" HorizontalAlignment="Center"/>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8" IsVisible="{Binding ShowNoResults}" Margin="0,32">
+                        <TextBlock Text="🔍" FontSize="36" HorizontalAlignment="Center" Foreground="#9CA3AF"/>
+                        <TextBlock Text="No results found for your query." FontSize="13" Foreground="#6B7280" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Panel>
 
-                <!-- Detail panel — status-box layout -->
-                <Border Grid.Row="1" Background="#1D2338" BorderBrush="#3D4563" BorderThickness="0,1,0,0"
-                        CornerRadius="0,0,16,16"
+                <!-- Detail panel -->
+                <Border Grid.Row="1" Background="#FFFFFF" BorderBrush="#DFE4EB" BorderThickness="0,1,0,0" CornerRadius="0,0,16,16"
                         IsVisible="{Binding SelectedResult, Converter={x:Static ObjectConverters.IsNotNull}}">
                     <ScrollViewer MaxHeight="320" VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="16,12" Spacing="12">
-
-                            <Border Background="#0F1320" CornerRadius="10" BorderBrush="#3D4563" BorderThickness="1">
+                            <Border Background="#F8FAFC" CornerRadius="10" BorderBrush="#DFE4EB" BorderThickness="1">
                                 <StackPanel>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="EVENT ID" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding SelectedResult.EventId}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                                    </Grid></Border>
-                                    <Border Height="1" Background="#3D4563"/>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="LEVEL" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <Border Grid.Column="1" CornerRadius="100" Padding="10,3" HorizontalAlignment="Right"
-                                                x:CompileBindings="False"
-                                                Background="{Binding SelectedResult.Level, Converter={StaticResource LevelBgConverter}, ConverterParameter=badge}">
-                                            <TextBlock Text="{Binding SelectedResult.Level}" FontSize="12" FontWeight="SemiBold" Foreground="#FFFFFF"/>
-                                        </Border>
-                                    </Grid></Border>
-                                    <Border Height="1" Background="#3D4563"/>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="SOURCE" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding SelectedResult.Source}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right" TextTrimming="CharacterEllipsis"/>
-                                    </Grid></Border>
-                                    <Border Height="1" Background="#3D4563"/>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="TIME CREATED" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding SelectedResult.TimeCreated, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss.fff}'}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                                    </Grid></Border>
-                                    <Border Height="1" Background="#3D4563"/>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="LOG NAME" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding SelectedResult.LogName}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                                    </Grid></Border>
-                                    <Border Height="1" Background="#3D4563"/>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="MACHINE" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding SelectedResult.MachineName}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                                    </Grid></Border>
-                                    <Border Height="1" Background="#3D4563"/>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="CATEGORY" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding SelectedResult.Category, FallbackValue='—'}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                                    </Grid></Border>
-                                    <Border Height="1" Background="#3D4563"/>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="USER ID" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding SelectedResult.UserId, FallbackValue='—'}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                                    </Grid></Border>
-                                    <Border Height="1" Background="#3D4563"/>
-                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                        <TextBlock Text="KEYWORDS" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                        <TextBlock Grid.Column="1" Text="{Binding SelectedResult.Keywords, FallbackValue='—'}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                                    </Grid></Border>
+                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="EVENT ID" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedResult.EventId}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right"/></Grid></Border>
+                                    <Border Height="1" Background="#DFE4EB"/>
+                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="LEVEL" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><Border Grid.Column="1" CornerRadius="100" Padding="10,3" HorizontalAlignment="Right" x:CompileBindings="False" Background="{Binding SelectedResult.Level, Converter={StaticResource LevelBgConverter}, ConverterParameter=badge}"><TextBlock Text="{Binding SelectedResult.Level}" FontSize="12" FontWeight="SemiBold" Foreground="#FFFFFF"/></Border></Grid></Border>
+                                    <Border Height="1" Background="#DFE4EB"/>
+                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="SOURCE" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedResult.Source}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right" TextTrimming="CharacterEllipsis"/></Grid></Border>
+                                    <Border Height="1" Background="#DFE4EB"/>
+                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="TIME CREATED" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedResult.TimeCreated, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss.fff}'}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right"/></Grid></Border>
+                                    <Border Height="1" Background="#DFE4EB"/>
+                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="LOG NAME" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedResult.LogName}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right"/></Grid></Border>
+                                    <Border Height="1" Background="#DFE4EB"/>
+                                    <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="MACHINE" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedResult.MachineName}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right"/></Grid></Border>
                                 </StackPanel>
                             </Border>
-
-                            <!-- Tags -->
                             <StackPanel Spacing="6">
-                                <ItemsControl x:CompileBindings="False" ItemsSource="{Binding SelectedEventTags}">
-                                    <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel Orientation="Horizontal"/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border Background="#1A2744" CornerRadius="100" BorderBrush="#3D4563" BorderThickness="1" Padding="8,3" Margin="0,0,6,4">
-                                                <StackPanel Orientation="Horizontal" Spacing="4">
-                                                    <TextBlock Text="{Binding}" Foreground="#E8E9F0" FontSize="11" VerticalAlignment="Center"/>
-                                                    <Button Content="✕" Command="{Binding #SearchViewRoot.DataContext.RemoveTagCommand}" CommandParameter="{Binding}"
-                                                            Background="Transparent" BorderThickness="0" Foreground="#767C96" FontSize="9" Padding="2,0" Cursor="Hand"/>
-                                                </StackPanel>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                <StackPanel Orientation="Horizontal" Spacing="6">
-                                    <TextBox Text="{Binding NewTagText}" Watermark="Add tag…" Width="160" FontSize="12" Padding="7,4"/>
-                                    <Button Content="Add Tag" Command="{Binding AddTagCommand}"
-                                            IsEnabled="{Binding NewTagText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
-                                            Padding="10,4" FontSize="12"/>
-                                </StackPanel>
+                                <ItemsControl x:CompileBindings="False" ItemsSource="{Binding SelectedEventTags}"><ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel Orientation="Horizontal"/></ItemsPanelTemplate></ItemsControl.ItemsPanel><ItemsControl.ItemTemplate><DataTemplate><Border Background="#EAF2FB" CornerRadius="100" BorderBrush="#BFDBFE" BorderThickness="1" Padding="8,3" Margin="0,0,6,4"><StackPanel Orientation="Horizontal" Spacing="4"><TextBlock Text="{Binding}" Foreground="#1160AD" FontSize="11" VerticalAlignment="Center"/><Button Content="✕" Command="{Binding #SearchViewRoot.DataContext.RemoveTagCommand}" CommandParameter="{Binding}" Background="Transparent" BorderThickness="0" Foreground="#9CA3AF" FontSize="9" Padding="2,0" Cursor="Hand"/></StackPanel></Border></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+                                <StackPanel Orientation="Horizontal" Spacing="6"><TextBox Text="{Binding NewTagText}" Watermark="Add tag…" Width="160" FontSize="12" Padding="7,4"/><Button Content="Add Tag" Command="{Binding AddTagCommand}" IsEnabled="{Binding NewTagText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" Padding="10,4" FontSize="12"/></StackPanel>
                             </StackPanel>
-
-                            <!-- Message -->
-                            <StackPanel Spacing="4">
-                                <TextBlock Text="MESSAGE" FontSize="11" FontWeight="Medium" LetterSpacing="1" Foreground="#767C96"/>
-                                <Border Background="#0F1320" CornerRadius="8" Padding="12,10" BorderBrush="#3D4563" BorderThickness="1">
-                                    <ScrollViewer MaxHeight="80" VerticalScrollBarVisibility="Auto">
-                                        <TextBlock Text="{Binding SelectedResult.Message}" TextWrapping="Wrap"
-                                                   Foreground="#E8E9F0" FontSize="12" FontFamily="Consolas, Menlo, monospace"/>
-                                    </ScrollViewer>
-                                </Border>
-                            </StackPanel>
-
-                            <!-- Bookmark -->
-                            <Border Background="#262C44" CornerRadius="10" Padding="12,10" BorderBrush="#3D4563" BorderThickness="1">
+                            <StackPanel Spacing="4"><TextBlock Text="MESSAGE" FontSize="11" FontWeight="Medium" LetterSpacing="1" Foreground="#6B7280"/><Border Background="#F8FAFC" CornerRadius="8" Padding="12,10" BorderBrush="#DFE4EB" BorderThickness="1"><ScrollViewer MaxHeight="80" VerticalScrollBarVisibility="Auto"><TextBlock Text="{Binding SelectedResult.Message}" TextWrapping="Wrap" Foreground="#374151" FontSize="12" FontFamily="Consolas, Menlo, monospace"/></ScrollViewer></Border></StackPanel>
+                            <Border Background="#F8FAFC" CornerRadius="10" Padding="12,10" BorderBrush="#DFE4EB" BorderThickness="1">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
-                                    <Button Command="{Binding ToggleBookmarkCommand}" CommandParameter="{Binding SelectedResult}" Padding="10,5" FontSize="13">
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <TextBlock Text="★" Foreground="#FFD700" FontSize="14" VerticalAlignment="Center"/>
-                                            <TextBlock Text="Bookmark" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                    </Button>
+                                    <Button Command="{Binding ToggleBookmarkCommand}" CommandParameter="{Binding SelectedResult}" Padding="10,5" FontSize="13"><StackPanel Orientation="Horizontal" Spacing="6"><TextBlock Text="★" Foreground="#D97706" FontSize="14" VerticalAlignment="Center"/><TextBlock Text="Bookmark" VerticalAlignment="Center"/></StackPanel></Button>
                                     <TextBox Text="{Binding SelectedResult.BookmarkComment, Mode=TwoWay}" Watermark="Add a comment…" Width="320" Padding="8,5"/>
                                     <Button Content="Save" Command="{Binding SaveBookmarkCommand}" Padding="14,5"/>
                                 </StackPanel>
                             </Border>
-
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
-
             </Grid>
         </Grid>
     </Grid>

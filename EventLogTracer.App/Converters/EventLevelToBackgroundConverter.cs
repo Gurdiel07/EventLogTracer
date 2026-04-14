@@ -8,7 +8,7 @@ namespace EventLogTracer.App.Converters;
 /// <summary>
 /// Converts <see cref="EventLevel"/> to a background brush.
 /// Pass ConverterParameter="badge" for vibrant badge colors;
-/// otherwise returns subtle row-tint colors.
+/// otherwise returns subtle row-tint colors for light theme.
 /// </summary>
 public class EventLevelToBackgroundConverter : IValueConverter
 {
@@ -21,11 +21,11 @@ public class EventLevelToBackgroundConverter : IValueConverter
 
         return level switch
         {
-            EventLevel.Critical    => Brush(badge ? "#E81123" : "#1F1520"),
-            EventLevel.Error       => Brush(badge ? "#D13438" : "#1F1218"),
-            EventLevel.Warning     => Brush(badge ? "#FF8C00" : "#1F1D12"),
-            EventLevel.Information => Brush(badge ? "#3B82F6" : "#121D35"),
-            EventLevel.Verbose     => Brush(badge ? "#767676" : "#171A28"),
+            EventLevel.Critical    => Brush(badge ? "#E81123" : "#FEF2F2"),
+            EventLevel.Error       => Brush(badge ? "#D13438" : "#FFF1F2"),
+            EventLevel.Warning     => Brush(badge ? "#D97706" : "#FFFBEB"),
+            EventLevel.Information => Brush(badge ? "#1160AD" : "#EFF6FF"),
+            EventLevel.Verbose     => Brush(badge ? "#6B7280" : "#F9FAFB"),
             _                      => Brushes.Transparent
         };
     }

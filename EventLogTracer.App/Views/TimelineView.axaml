@@ -7,19 +7,13 @@
              mc:Ignorable="d"
              x:Class="EventLogTracer.App.Views.TimelineView"
              x:DataType="vm:TimelineViewModel"
-             x:Name="Root"
-             FontFamily="Inter">
+             x:Name="Root" FontFamily="Inter">
 
     <Grid RowDefinitions="Auto,Auto,*,Auto" Margin="24,24,24,12">
-
-        <!-- Header -->
         <StackPanel Grid.Row="0" Margin="0,0,0,12">
-            <TextBlock Text="Timeline" FontSize="28" FontWeight="Bold" Foreground="#E8E9F0" LetterSpacing="-1"/>
-            <TextBlock Text="Interactive event visualization with zoom and navigation"
-                       FontSize="14" Foreground="#767C96" Margin="0,4,0,0"/>
+            <TextBlock Text="Timeline" FontSize="28" FontWeight="Bold" Foreground="#111827" LetterSpacing="-1"/>
+            <TextBlock Text="Interactive event visualization with zoom and navigation" FontSize="14" Foreground="#6B7280" Margin="0,4,0,0"/>
         </StackPanel>
-
-        <!-- Toolbar -->
         <StackPanel Grid.Row="1" Spacing="8" Margin="0,0,0,10">
             <WrapPanel Orientation="Horizontal">
                 <Button Content="Back" Command="{Binding NavigateBackwardCommand}" Padding="10,6"/>
@@ -28,157 +22,61 @@
                 <Button Content="Zoom +" Command="{Binding ZoomInCommand}" Padding="10,6" Margin="12,0,0,0"/>
                 <Button Content="Zoom -" Command="{Binding ZoomOutCommand}" Padding="10,6" Margin="4,0,0,0"/>
                 <Button Content="Reset" Command="{Binding ResetZoomCommand}" Padding="10,6" Margin="4,0,0,0"/>
-                <StackPanel Orientation="Horizontal" Spacing="6" Margin="12,0,0,0">
-                    <TextBlock Text="Level:" Foreground="#767C96" FontSize="12" VerticalAlignment="Center"/>
-                    <ComboBox ItemsSource="{Binding LevelOptions}" SelectedItem="{Binding SelectedLevel}" Width="140"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Spacing="6" Margin="12,0,0,0">
-                    <TextBlock Text="Log:" Foreground="#767C96" FontSize="12" VerticalAlignment="Center"/>
-                    <ComboBox ItemsSource="{Binding LogNameOptions}" SelectedItem="{Binding SelectedLogName}" Width="170"/>
-                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="6" Margin="12,0,0,0"><TextBlock Text="Level:" Foreground="#6B7280" FontSize="12" VerticalAlignment="Center"/><ComboBox ItemsSource="{Binding LevelOptions}" SelectedItem="{Binding SelectedLevel}" Width="140"/></StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="6" Margin="12,0,0,0"><TextBlock Text="Log:" Foreground="#6B7280" FontSize="12" VerticalAlignment="Center"/><ComboBox ItemsSource="{Binding LogNameOptions}" SelectedItem="{Binding SelectedLogName}" Width="170"/></StackPanel>
                 <Button Content="Refresh" Command="{Binding LoadTimelineCommand}" Padding="10,6" Margin="12,0,0,0"/>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding TotalVisible, StringFormat='Showing {0} events |'}" FontSize="12" Foreground="#9BA2BE"/>
-                <TextBlock Text="{Binding VisibleRangeStart, StringFormat='{}{0:MMM dd HH:mm}'}" FontSize="12" Foreground="#9BA2BE"/>
-                <TextBlock Text=" - " FontSize="12" Foreground="#9BA2BE"/>
-                <TextBlock Text="{Binding VisibleRangeEnd, StringFormat='{}{0:MMM dd HH:mm}'}" FontSize="12" Foreground="#9BA2BE"/>
-                <TextBlock Text="{Binding ZoomLevel, StringFormat=' | Zoom {0:0.##}x'}" FontSize="12" Foreground="#767C96" Margin="8,0,0,0"/>
+                <TextBlock Text="{Binding TotalVisible, StringFormat='Showing {0} events |'}" FontSize="12" Foreground="#6B7280"/>
+                <TextBlock Text="{Binding VisibleRangeStart, StringFormat='{}{0:MMM dd HH:mm}'}" FontSize="12" Foreground="#6B7280"/>
+                <TextBlock Text=" - " FontSize="12" Foreground="#6B7280"/>
+                <TextBlock Text="{Binding VisibleRangeEnd, StringFormat='{}{0:MMM dd HH:mm}'}" FontSize="12" Foreground="#6B7280"/>
+                <TextBlock Text="{Binding ZoomLevel, StringFormat=' | Zoom {0:0.##}x'}" FontSize="12" Foreground="#9CA3AF" Margin="8,0,0,0"/>
             </WrapPanel>
             <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsLoading}" Height="2" Background="Transparent"/>
         </StackPanel>
-
-        <!-- Chart -->
-        <Border Grid.Row="2" Background="#1D2338" BorderBrush="#3D4563" BorderThickness="1"
-                CornerRadius="16" Padding="16">
+        <Border Grid.Row="2" Background="#FFFFFF" BorderBrush="#DFE4EB" BorderThickness="1" CornerRadius="16" Padding="16">
             <StackPanel>
-                <TextBlock Text="Event Timeline" FontSize="14" FontWeight="SemiBold"
-                           Foreground="#E8E9F0" LetterSpacing="-0.15"/>
-                <Border Height="1" Background="#3D4563" Margin="0,12,0,12"/>
-                <Border Background="#0F1320" CornerRadius="10" Padding="8" BorderBrush="#3D4563" BorderThickness="1">
-                    <lvc:CartesianChart x:CompileBindings="False"
-                                        Series="{Binding TimelineSeries}"
-                                        XAxes="{Binding TimelineXAxes}"
-                                        YAxes="{Binding TimelineYAxes}"
-                                        ChartPointPointerDownCommand="{Binding SelectChartPointCommand}"
-                                        ZoomMode="X" TooltipPosition="Top"
-                                        Background="Transparent" MinHeight="320"/>
+                <TextBlock Text="Event Timeline" FontSize="14" FontWeight="SemiBold" Foreground="#111827" LetterSpacing="-0.15"/>
+                <Border Height="1" Background="#DFE4EB" Margin="0,12,0,12"/>
+                <Border Background="#F8FAFC" CornerRadius="10" Padding="8" BorderBrush="#DFE4EB" BorderThickness="1">
+                    <lvc:CartesianChart x:CompileBindings="False" Series="{Binding TimelineSeries}" XAxes="{Binding TimelineXAxes}" YAxes="{Binding TimelineYAxes}" ChartPointPointerDownCommand="{Binding SelectChartPointCommand}" ZoomMode="X" TooltipPosition="Top" Background="Transparent" MinHeight="320"/>
                 </Border>
             </StackPanel>
         </Border>
-
-        <!-- Detail panel — status-box layout -->
-        <Border Grid.Row="3" Background="#1D2338" BorderBrush="#3D4563" BorderThickness="0,1,0,0"
-                CornerRadius="0,0,16,16"
+        <Border Grid.Row="3" Background="#FFFFFF" BorderBrush="#DFE4EB" BorderThickness="0,1,0,0" CornerRadius="0,0,16,16"
                 IsVisible="{Binding SelectedEventDetail, Converter={x:Static ObjectConverters.IsNotNull}}">
             <ScrollViewer MaxHeight="320" VerticalScrollBarVisibility="Auto">
                 <StackPanel Margin="16,12" Spacing="12">
-
-                    <Border Background="#0F1320" CornerRadius="10" BorderBrush="#3D4563" BorderThickness="1">
+                    <Border Background="#F8FAFC" CornerRadius="10" BorderBrush="#DFE4EB" BorderThickness="1">
                         <StackPanel>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="EVENT ID" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.EventId}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                            </Grid></Border>
-                            <Border Height="1" Background="#3D4563"/>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="LEVEL" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <Border Grid.Column="1" CornerRadius="100" Padding="10,3" HorizontalAlignment="Right"
-                                        x:CompileBindings="False"
-                                        Background="{Binding SelectedEventDetail.Level, Converter={StaticResource LevelBgConverter}, ConverterParameter=badge}">
-                                    <TextBlock Text="{Binding SelectedEventDetail.Level}" FontSize="12" FontWeight="SemiBold" Foreground="#FFFFFF"/>
-                                </Border>
-                            </Grid></Border>
-                            <Border Height="1" Background="#3D4563"/>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="SOURCE" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.Source}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right" TextTrimming="CharacterEllipsis"/>
-                            </Grid></Border>
-                            <Border Height="1" Background="#3D4563"/>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="TIME CREATED" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.TimeCreated, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss.fff}'}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                            </Grid></Border>
-                            <Border Height="1" Background="#3D4563"/>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="LOG NAME" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.LogName}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                            </Grid></Border>
-                            <Border Height="1" Background="#3D4563"/>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="MACHINE" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.MachineName}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                            </Grid></Border>
-                            <Border Height="1" Background="#3D4563"/>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="CATEGORY" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.Category, FallbackValue='-'}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                            </Grid></Border>
-                            <Border Height="1" Background="#3D4563"/>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="USER ID" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.UserId, FallbackValue='-'}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                            </Grid></Border>
-                            <Border Height="1" Background="#3D4563"/>
-                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*">
-                                <TextBlock Text="KEYWORDS" FontSize="11" FontWeight="Medium" Foreground="#767C96" LetterSpacing="1" VerticalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.Keywords, FallbackValue='-'}" FontSize="13" FontWeight="Medium" Foreground="#E8E9F0" HorizontalAlignment="Right"/>
-                            </Grid></Border>
+                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="EVENT ID" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.EventId}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right"/></Grid></Border>
+                            <Border Height="1" Background="#DFE4EB"/>
+                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="LEVEL" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><Border Grid.Column="1" CornerRadius="100" Padding="10,3" HorizontalAlignment="Right" x:CompileBindings="False" Background="{Binding SelectedEventDetail.Level, Converter={StaticResource LevelBgConverter}, ConverterParameter=badge}"><TextBlock Text="{Binding SelectedEventDetail.Level}" FontSize="12" FontWeight="SemiBold" Foreground="#FFFFFF"/></Border></Grid></Border>
+                            <Border Height="1" Background="#DFE4EB"/>
+                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="SOURCE" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.Source}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right" TextTrimming="CharacterEllipsis"/></Grid></Border>
+                            <Border Height="1" Background="#DFE4EB"/>
+                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="TIME CREATED" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.TimeCreated, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss.fff}'}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right"/></Grid></Border>
+                            <Border Height="1" Background="#DFE4EB"/>
+                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="LOG NAME" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.LogName}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right"/></Grid></Border>
+                            <Border Height="1" Background="#DFE4EB"/>
+                            <Border Padding="14,10"><Grid ColumnDefinitions="140,*"><TextBlock Text="MACHINE" FontSize="11" FontWeight="Medium" Foreground="#6B7280" LetterSpacing="1" VerticalAlignment="Center"/><TextBlock Grid.Column="1" Text="{Binding SelectedEventDetail.MachineName}" FontSize="13" FontWeight="Medium" Foreground="#111827" HorizontalAlignment="Right"/></Grid></Border>
                         </StackPanel>
                     </Border>
-
-                    <!-- Tags -->
                     <StackPanel Spacing="6">
-                        <ItemsControl x:CompileBindings="False" ItemsSource="{Binding SelectedEventTags}">
-                            <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel Orientation="Horizontal"/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Background="#1A2744" CornerRadius="100" BorderBrush="#3D4563" BorderThickness="1" Padding="8,3" Margin="0,0,6,4">
-                                        <StackPanel Orientation="Horizontal" Spacing="4">
-                                            <TextBlock Text="{Binding}" Foreground="#E8E9F0" FontSize="11" VerticalAlignment="Center"/>
-                                            <Button Content="✕" Command="{Binding #Root.DataContext.RemoveTagCommand}" CommandParameter="{Binding}"
-                                                    Background="Transparent" BorderThickness="0" Foreground="#767C96" FontSize="9" Padding="2,0" Cursor="Hand"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <TextBox Text="{Binding NewTagText}" Watermark="Add tag…" Width="160" FontSize="12" Padding="7,4"/>
-                            <Button Content="Add Tag" Command="{Binding AddTagCommand}"
-                                    IsEnabled="{Binding NewTagText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
-                                    Padding="10,4" FontSize="12"/>
-                        </StackPanel>
+                        <ItemsControl x:CompileBindings="False" ItemsSource="{Binding SelectedEventTags}"><ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel Orientation="Horizontal"/></ItemsPanelTemplate></ItemsControl.ItemsPanel><ItemsControl.ItemTemplate><DataTemplate><Border Background="#EAF2FB" CornerRadius="100" BorderBrush="#BFDBFE" BorderThickness="1" Padding="8,3" Margin="0,0,6,4"><StackPanel Orientation="Horizontal" Spacing="4"><TextBlock Text="{Binding}" Foreground="#1160AD" FontSize="11" VerticalAlignment="Center"/><Button Content="✕" Command="{Binding #Root.DataContext.RemoveTagCommand}" CommandParameter="{Binding}" Background="Transparent" BorderThickness="0" Foreground="#9CA3AF" FontSize="9" Padding="2,0" Cursor="Hand"/></StackPanel></Border></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+                        <StackPanel Orientation="Horizontal" Spacing="6"><TextBox Text="{Binding NewTagText}" Watermark="Add tag…" Width="160" FontSize="12" Padding="7,4"/><Button Content="Add Tag" Command="{Binding AddTagCommand}" IsEnabled="{Binding NewTagText, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" Padding="10,4" FontSize="12"/></StackPanel>
                     </StackPanel>
-
-                    <!-- Message -->
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="MESSAGE" FontSize="11" FontWeight="Medium" LetterSpacing="1" Foreground="#767C96"/>
-                        <Border Background="#0F1320" CornerRadius="8" Padding="12,10" BorderBrush="#3D4563" BorderThickness="1">
-                            <ScrollViewer MaxHeight="80" VerticalScrollBarVisibility="Auto">
-                                <TextBlock Text="{Binding SelectedEventDetail.Message}" TextWrapping="Wrap"
-                                           Foreground="#E8E9F0" FontSize="12" FontFamily="Consolas, Menlo, monospace"/>
-                            </ScrollViewer>
-                        </Border>
-                    </StackPanel>
-
-                    <!-- Bookmark -->
-                    <Border Background="#262C44" CornerRadius="10" Padding="12,10" BorderBrush="#3D4563" BorderThickness="1">
+                    <StackPanel Spacing="4"><TextBlock Text="MESSAGE" FontSize="11" FontWeight="Medium" LetterSpacing="1" Foreground="#6B7280"/><Border Background="#F8FAFC" CornerRadius="8" Padding="12,10" BorderBrush="#DFE4EB" BorderThickness="1"><ScrollViewer MaxHeight="80" VerticalScrollBarVisibility="Auto"><TextBlock Text="{Binding SelectedEventDetail.Message}" TextWrapping="Wrap" Foreground="#374151" FontSize="12" FontFamily="Consolas, Menlo, monospace"/></ScrollViewer></Border></StackPanel>
+                    <Border Background="#F8FAFC" CornerRadius="10" Padding="12,10" BorderBrush="#DFE4EB" BorderThickness="1">
                         <StackPanel Orientation="Horizontal" Spacing="10">
-                            <Button Command="{Binding ToggleBookmarkCommand}" CommandParameter="{Binding SelectedEventDetail}" Padding="10,5" FontSize="13">
-                                <StackPanel Orientation="Horizontal" Spacing="6">
-                                    <TextBlock Text="★" Foreground="#FFD700" FontSize="14" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Bookmark" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
+                            <Button Command="{Binding ToggleBookmarkCommand}" CommandParameter="{Binding SelectedEventDetail}" Padding="10,5" FontSize="13"><StackPanel Orientation="Horizontal" Spacing="6"><TextBlock Text="★" Foreground="#D97706" FontSize="14" VerticalAlignment="Center"/><TextBlock Text="Bookmark" VerticalAlignment="Center"/></StackPanel></Button>
                             <TextBox Text="{Binding SelectedEventDetail.BookmarkComment, Mode=TwoWay}" Watermark="Add a comment..." Width="320" Padding="8,5"/>
                             <Button Content="Save" Command="{Binding SaveBookmarkCommand}" Padding="14,5"/>
                         </StackPanel>
                     </Border>
-
                 </StackPanel>
             </ScrollViewer>
         </Border>
-
     </Grid>
 </UserControl>

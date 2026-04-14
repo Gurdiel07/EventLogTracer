@@ -7,8 +7,8 @@ namespace EventLogTracer.App.Converters;
 
 public class EventLevelToForegroundConverter : IValueConverter
 {
-    private static readonly IBrush Default = new SolidColorBrush(Color.Parse("#CCCCCC"));
-    private static readonly IBrush Dimmed  = new SolidColorBrush(Color.Parse("#666666"));
+    private static readonly IBrush Default = new SolidColorBrush(Color.Parse("#374151"));
+    private static readonly IBrush Dimmed  = new SolidColorBrush(Color.Parse("#9CA3AF"));
 
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         => value is EventLevel.Verbose ? Dimmed : Default;
