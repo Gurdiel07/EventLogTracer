@@ -1,59 +1,33 @@
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:EventLogTracer.App.ViewModels"
-        xmlns:views="using:EventLogTracer.App.Views"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d"
-        x:Class="EventLogTracer.App.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Title="Event Log Tracer"
-        Width="1280" Height="800"
-        MinWidth="900" MinHeight="600"
-        WindowStartupLocation="CenterScreen"
-        Background="#0C111B"
-        FontFamily="Inter"
-        KeyDown="OnWindowKeyDown">
-
-    <Window.Styles>
-        <Style Selector="Button.nav-btn">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="#E8E9ED"/>
-            <Setter Property="Padding" Value="16,14"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="Margin" Value="4,2"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="FontWeight" Value="Medium"/>
-        </Style>
-        <Style Selector="Button.nav-btn:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#131A28"/>
-        </Style>
-        <Style Selector="Button.nav-btn.active">
-            <Setter Property="Foreground" Value="#FFFFFF"/>
-        </Style>
-        <Style Selector="Button.nav-btn.active /template/ ContentPresenter">
-            <Setter Property="Background" Value="#3b82f6"/>
-        </Style>
-        <Style Selector="Button.nav-btn.active:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#3b82f6"/>
-        </Style>
-    </Window.Styles>
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:vm="using:EventLogTracer.App.ViewModels"
+       xmlns:views="using:EventLogTracer.App.Views"
+       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       x:Class="EventLogTracer.App.Views.MainWindow"
+       x:DataType="vm:MainWindowViewModel"
+       Title="Event Log Tracer"
+       Width="1280" Height="800"
+       MinWidth="900" MinHeight="600"
+       WindowStartupLocation="CenterScreen"
+       Background="#151A2E"
+       FontFamily="Inter"
+       KeyDown="OnWindowKeyDown">
 
     <Grid RowDefinitions="*,Auto">
 
         <Grid Grid.Row="0" ColumnDefinitions="220,*">
 
-            <!-- Sidebar with gradient -->
+            <!-- Sidebar -->
             <Border Grid.Column="0"
-                    BorderBrush="#1E2D4A"
+                    BorderBrush="#3D4563"
                     BorderThickness="0,0,1,0">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#0B1628" Offset="0"/>
-                        <GradientStop Color="#0F1D32" Offset="0.5"/>
-                        <GradientStop Color="#0B1628" Offset="1"/>
+                        <GradientStop Color="#0F1628" Offset="0"/>
+                        <GradientStop Color="#131B30" Offset="0.5"/>
+                        <GradientStop Color="#0F1628" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <DockPanel>
@@ -62,11 +36,11 @@
                         <TextBlock Text="⚡ Event Log Tracer"
                                    FontSize="16"
                                    FontWeight="SemiBold"
-                                   Foreground="#F0F4FF"
+                                   Foreground="#E8E9F0"
                                    LetterSpacing="-0.5"/>
                         <TextBlock Text="Real-time Windows Event Analysis"
                                    FontSize="11"
-                                   Foreground="#4A5670"
+                                   Foreground="#585E72"
                                    Margin="0,4,0,0"/>
                     </StackPanel>
 
@@ -89,16 +63,16 @@
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <TextBlock Text="📋" FontSize="14"/>
                                 <TextBlock Text="Event Viewer"/>
-                                <Border Background="#0A1428"
+                                <Border Background="#262C44"
                                         CornerRadius="100"
                                         Padding="8,2"
-                                        BorderBrush="#1A2D5A"
+                                        BorderBrush="#3D4563"
                                         BorderThickness="1"
                                         VerticalAlignment="Center">
                                     <TextBlock Text="{Binding TotalEventCount}"
                                                FontSize="11"
                                                FontWeight="SemiBold"
-                                               Foreground="#3b82f6"/>
+                                               Foreground="#60A5FA"/>
                                 </Border>
                             </StackPanel>
                         </Button>
@@ -136,7 +110,7 @@
                     </StackPanel>
 
                     <StackPanel DockPanel.Dock="Bottom" Margin="8,0,8,12">
-                        <Separator Margin="4,8" Background="#1E2D4A"/>
+                        <Separator Margin="4,8" Background="#3D4563"/>
                         <Button Classes="nav-btn"
                                 Classes.active="{Binding IsSettingsSelected}"
                                 Command="{Binding NavigateToCommand}"
@@ -151,7 +125,7 @@
                 </DockPanel>
             </Border>
 
-            <Border Grid.Column="1" Background="#0C111B">
+            <Border Grid.Column="1" Background="#151A2E">
                 <ContentControl Content="{Binding CurrentPage}">
                     <ContentControl.DataTemplates>
                         <DataTemplate DataType="vm:DashboardViewModel">
@@ -178,10 +152,10 @@
 
         </Grid>
 
-        <!-- Status bar — minimal -->
+        <!-- Status bar -->
         <Border Grid.Row="1"
-                Background="#080C16"
-                BorderBrush="#1E2D4A"
+                Background="#0F1320"
+                BorderBrush="#3D4563"
                 BorderThickness="0,1,0,0"
                 Padding="16,5">
             <Grid ColumnDefinitions="Auto,*,Auto,Auto">
@@ -189,31 +163,33 @@
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8">
                     <Panel Width="7" Height="7" VerticalAlignment="Center">
                         <Ellipse Width="7" Height="7" Fill="#00C851" IsVisible="{Binding IsMonitoring}"/>
-                        <Ellipse Width="7" Height="7" Fill="#FF4444" IsVisible="{Binding !IsMonitoring}"/>
+                        <Ellipse Width="7" Height="7" Fill="#EF4444" IsVisible="{Binding !IsMonitoring}"/>
                     </Panel>
                     <TextBlock Text="{Binding StatusMessage}"
-                               Foreground="#8899B4"
+                               Foreground="#9BA2BE"
                                FontSize="12"
                                VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <TextBlock Grid.Column="1"
                            Text="{Binding LastEventInfo}"
-                           Foreground="#4A5670"
+                           Foreground="#767C96"
                            FontSize="12"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" Margin="0,0,16,0">
-                    <TextBlock Text="Events:" Foreground="#4A5670" FontSize="12" VerticalAlignment="Center"/>
+                    <TextBlock Text="Events:" Foreground="#767C96" FontSize="12" VerticalAlignment="Center"/>
                     <TextBlock Text="{Binding TotalEventCount}"
-                               Foreground="#E8E9ED"
+                               Foreground="#E8E9F0"
                                FontSize="12"
                                FontWeight="SemiBold"
                                VerticalAlignment="Center"/>
                 </StackPanel>
 
                 <Button Grid.Column="3"
+                        Classes.btn-primary="{Binding !IsMonitoring}"
+                        Classes.btn-danger="{Binding IsMonitoring}"
                         Content="{Binding ToggleButtonText}"
                         Command="{Binding ToggleMonitoringCommand}"
                         Padding="18,5"

@@ -17,91 +17,88 @@
                 <StackPanel Grid.Column="0">
                     <TextBlock Text="Dashboard"
                                FontSize="28" FontWeight="Bold"
-                               Foreground="#F0F4FF" LetterSpacing="-1"/>
+                               Foreground="#E8E9F0" LetterSpacing="-1"/>
                     <TextBlock Text="Event activity overview — last 24 hours"
-                               FontSize="14" Foreground="#4A5670"
+                               FontSize="14" Foreground="#767C96"
                                Margin="0,4,0,0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
                     <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsLoading}"
                                  Height="2" Width="80" Background="Transparent" VerticalAlignment="Center"/>
-                    <Button Content="⟳ Refresh" Command="{Binding RefreshCommand}"
-                            Padding="18,9" CornerRadius="8" FontSize="13" FontWeight="Medium"
-                            Background="#1E2538" Foreground="#A0A8C0"
-                            BorderBrush="#2A3550" BorderThickness="1"/>
+                    <Button Content="⟳ Refresh" Command="{Binding RefreshCommand}"/>
                 </StackPanel>
             </Grid>
 
             <!-- Welcome / Empty state -->
-            <Border Background="#0D1220" CornerRadius="20" Padding="40"
-                    BorderBrush="#1A2D5A" BorderThickness="1"
+            <Border Background="#1D2338" CornerRadius="20" Padding="40"
+                    BorderBrush="#3D4563" BorderThickness="1"
                     IsVisible="{Binding NoData}">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
                     <TextBlock Text="⚡" FontSize="64" HorizontalAlignment="Center"
-                               Foreground="#60a5fa"/>
+                               Foreground="#60A5FA"/>
                     <TextBlock Text="Welcome to Event Log Tracer"
-                               FontSize="28" FontWeight="Bold" Foreground="#F0F4FF"
+                               FontSize="28" FontWeight="Bold" Foreground="#E8E9F0"
                                HorizontalAlignment="Center" LetterSpacing="-1"/>
                     <TextBlock Text="Click 'Start Monitoring' to begin collecting events"
-                               FontSize="14" Foreground="#4A5670" HorizontalAlignment="Center"/>
+                               FontSize="14" Foreground="#767C96" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Border>
 
-            <!-- Summary cards — stat-label uppercase + stat-number big -->
+            <!-- Summary cards -->
             <WrapPanel Orientation="Horizontal" IsVisible="{Binding HasData}">
 
-                <Border Background="#0D1220" CornerRadius="12" Padding="20"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20"
                         Margin="0,0,12,10" Width="175"
-                        BorderBrush="#1E2D4A" BorderThickness="1">
+                        BorderBrush="#3D4563" BorderThickness="1">
                     <StackPanel>
                         <TextBlock Text="CRITICAL" Foreground="#E81123"
                                    FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
                         <TextBlock Text="{Binding CriticalCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#F0F4FF" Margin="0,6,0,0" LetterSpacing="-1"/>
+                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
                     </StackPanel>
                 </Border>
 
-                <Border Background="#0D1220" CornerRadius="12" Padding="20"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20"
                         Margin="0,0,12,10" Width="175"
-                        BorderBrush="#1E2D4A" BorderThickness="1">
+                        BorderBrush="#3D4563" BorderThickness="1">
                     <StackPanel>
                         <TextBlock Text="ERROR" Foreground="#D13438"
                                    FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
                         <TextBlock Text="{Binding ErrorCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#F0F4FF" Margin="0,6,0,0" LetterSpacing="-1"/>
+                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
                     </StackPanel>
                 </Border>
 
-                <Border Background="#0D1220" CornerRadius="12" Padding="20"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20"
                         Margin="0,0,12,10" Width="175"
-                        BorderBrush="#1E2D4A" BorderThickness="1">
+                        BorderBrush="#3D4563" BorderThickness="1">
                     <StackPanel>
                         <TextBlock Text="WARNING" Foreground="#FF8C00"
                                    FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
                         <TextBlock Text="{Binding WarningCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#F0F4FF" Margin="0,6,0,0" LetterSpacing="-1"/>
+                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
                     </StackPanel>
                 </Border>
 
-                <Border Background="#0D1220" CornerRadius="12" Padding="20"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20"
                         Margin="0,0,12,10" Width="175"
-                        BorderBrush="#1E2D4A" BorderThickness="1">
+                        BorderBrush="#3D4563" BorderThickness="1">
                     <StackPanel>
-                        <TextBlock Text="INFORMATION" Foreground="#3b82f6"
+                        <TextBlock Text="INFORMATION" Foreground="#3B82F6"
                                    FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
                         <TextBlock Text="{Binding InformationCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#F0F4FF" Margin="0,6,0,0" LetterSpacing="-1"/>
+                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
                     </StackPanel>
                 </Border>
 
-                <Border Background="#0D1220" CornerRadius="12" Padding="20"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20"
                         Margin="0,0,0,10" Width="175"
-                        BorderBrush="#3b82f6" BorderThickness="1">
+                        BorderBrush="#3B82F6" BorderThickness="1">
                     <StackPanel>
-                        <TextBlock Text="TOTAL (24H)" Foreground="#E8E9ED"
+                        <TextBlock Text="TOTAL (24H)" Foreground="#9BA2BE"
                                    FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
                         <TextBlock Text="{Binding TotalCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#F0F4FF" Margin="0,6,0,0" LetterSpacing="-1"/>
+                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
                     </StackPanel>
                 </Border>
 
@@ -109,22 +106,22 @@
 
             <!-- Charts: Pie + Timeline -->
             <Grid ColumnDefinitions="*,*" IsVisible="{Binding HasData}">
-                <Border Grid.Column="0" Background="#0D1220" CornerRadius="16" Padding="20"
-                        Margin="0,0,10,0" BorderBrush="#1E2D4A" BorderThickness="1">
+                <Border Grid.Column="0" Background="#1D2338" CornerRadius="16" Padding="20"
+                        Margin="0,0,10,0" BorderBrush="#3D4563" BorderThickness="1">
                     <StackPanel Spacing="12">
                         <TextBlock Text="Event Level Distribution" FontSize="14" FontWeight="SemiBold"
-                                   Foreground="#E8E9ED" LetterSpacing="-0.3"/>
+                                   Foreground="#E8E9F0" LetterSpacing="-0.3"/>
                         <lvc:PieChart x:CompileBindings="False"
                                       Series="{Binding LevelPieSeries}" LegendPosition="Bottom"
                                       LegendTextPaint="{Binding LegendTextPaint}"
                                       Height="270" Background="Transparent"/>
                     </StackPanel>
                 </Border>
-                <Border Grid.Column="1" Background="#0D1220" CornerRadius="16" Padding="20"
-                        Margin="10,0,0,0" BorderBrush="#1E2D4A" BorderThickness="1">
+                <Border Grid.Column="1" Background="#1D2338" CornerRadius="16" Padding="20"
+                        Margin="10,0,0,0" BorderBrush="#3D4563" BorderThickness="1">
                     <StackPanel Spacing="12">
                         <TextBlock Text="Events Over Time (24h)" FontSize="14" FontWeight="SemiBold"
-                                   Foreground="#E8E9ED" LetterSpacing="-0.3"/>
+                                   Foreground="#E8E9F0" LetterSpacing="-0.3"/>
                         <lvc:CartesianChart x:CompileBindings="False"
                                             Series="{Binding EventsTimelineSeries}"
                                             XAxes="{Binding TimelineXAxes}" YAxes="{Binding TimelineYAxes}"
@@ -134,12 +131,12 @@
             </Grid>
 
             <!-- Bar chart: Top 10 Sources -->
-            <Border Background="#0D1220" CornerRadius="16" Padding="20"
-                    BorderBrush="#1E2D4A" BorderThickness="1"
+            <Border Background="#1D2338" CornerRadius="16" Padding="20"
+                    BorderBrush="#3D4563" BorderThickness="1"
                     IsVisible="{Binding HasData}">
                 <StackPanel Spacing="12">
                     <TextBlock Text="Top 10 Event Sources" FontSize="14" FontWeight="SemiBold"
-                               Foreground="#E8E9ED" LetterSpacing="-0.3"/>
+                               Foreground="#E8E9F0" LetterSpacing="-0.3"/>
                     <lvc:CartesianChart x:CompileBindings="False"
                                         Series="{Binding TopSourcesBarSeries}"
                                         XAxes="{Binding SourcesXAxes}" YAxes="{Binding SourcesYAxes}"
@@ -148,50 +145,48 @@
             </Border>
 
             <!-- Anomaly Detection -->
-            <Border Background="#0D1220" CornerRadius="16" Padding="20"
-                    BorderBrush="#1E2D4A" BorderThickness="1"
+            <Border Background="#1D2338" CornerRadius="16" Padding="20"
+                    BorderBrush="#3D4563" BorderThickness="1"
                     IsVisible="{Binding HasData}">
                 <StackPanel Spacing="12">
                     <Grid ColumnDefinitions="*,Auto">
                         <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
                             <TextBlock Text="Anomaly Detection" FontSize="14" FontWeight="SemiBold"
-                                       Foreground="#E8E9ED" LetterSpacing="-0.3"/>
-                            <Border Background="#D83B01" CornerRadius="100" Padding="10,3"
+                                       Foreground="#E8E9F0" LetterSpacing="-0.3"/>
+                            <Border Background="#3D1518" CornerRadius="100" Padding="10,3"
+                                    BorderBrush="#5C2B30" BorderThickness="1"
                                     VerticalAlignment="Center" IsVisible="{Binding HasAnomalies}">
                                 <TextBlock Text="{Binding AnomalyCount, StringFormat='{}{0} detected'}"
-                                           FontSize="12" FontWeight="Medium" Foreground="White"/>
+                                           FontSize="12" FontWeight="Medium" Foreground="#EF4444"/>
                             </Border>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
                             <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsDetectingAnomalies}"
                                          Height="2" Width="60" Background="Transparent" VerticalAlignment="Center"/>
                             <Button Content="Run Detection" Command="{Binding DetectAnomaliesCommand}"
-                                    IsEnabled="{Binding !IsDetectingAnomalies}" Padding="18,9" CornerRadius="8"
-                                    FontSize="13" FontWeight="Medium"
-                                    Background="#1E2538" Foreground="#A0A8C0"
-                                    BorderBrush="#2A3550" BorderThickness="1"/>
+                                    IsEnabled="{Binding !IsDetectingAnomalies}"/>
                         </StackPanel>
                     </Grid>
 
                     <StackPanel Orientation="Horizontal" Spacing="10" IsVisible="{Binding NoAnomalies}">
-                        <TextBlock Text="✓" FontSize="18" Foreground="#00C851" VerticalAlignment="Center"/>
+                        <TextBlock Text="✓" FontSize="18" Foreground="#22C55E" VerticalAlignment="Center"/>
                         <TextBlock Text="No anomalies detected in the last 24 hours."
-                                   FontSize="13" Foreground="#8899B4" VerticalAlignment="Center"/>
+                                   FontSize="13" Foreground="#767C96" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <ItemsControl x:CompileBindings="False" ItemsSource="{Binding AnomalyResults}"
                                   IsVisible="{Binding HasAnomalies}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="#080C16" CornerRadius="12" Margin="0,0,0,8"
-                                        BorderBrush="#1E2D4A" BorderThickness="1">
+                                <Border Background="#262C44" CornerRadius="12" Margin="0,0,0,8"
+                                        BorderBrush="#3D4563" BorderThickness="1">
                                     <Grid ColumnDefinitions="5,*">
                                         <Border Grid.Column="0" CornerRadius="12,0,0,12"
                                                 Background="{Binding Severity, Converter={StaticResource AnomalySeverityToColorConverter}}"/>
                                         <StackPanel Grid.Column="1" Margin="14,10" Spacing="5">
                                             <Grid ColumnDefinitions="*,Auto">
                                                 <TextBlock Text="{Binding Description}" FontSize="13" FontWeight="SemiBold"
-                                                           Foreground="#F0F4FF" TextWrapping="Wrap"/>
+                                                           Foreground="#E8E9F0" TextWrapping="Wrap"/>
                                                 <Border Grid.Column="1" CornerRadius="100" Padding="10,3" Margin="10,0,0,0"
                                                         VerticalAlignment="Top"
                                                         Background="{Binding Severity, Converter={StaticResource AnomalySeverityToColorConverter}}">
@@ -200,11 +195,11 @@
                                             </Grid>
                                             <WrapPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding DetectedAt, StringFormat='{}{0:HH:mm:ss} UTC'}"
-                                                           FontSize="12" Foreground="#4A5670" Margin="0,0,14,0"/>
+                                                           FontSize="12" Foreground="#585E72" Margin="0,0,14,0"/>
                                                 <TextBlock Text="{Binding Confidence, StringFormat='Confidence: {0:P0}'}"
-                                                           FontSize="12" Foreground="#4A5670" Margin="0,0,14,0"/>
+                                                           FontSize="12" Foreground="#585E72" Margin="0,0,14,0"/>
                                                 <TextBlock Text="{Binding RelatedEvents.Count, StringFormat='{}{0} related events'}"
-                                                           FontSize="12" Foreground="#4A5670"/>
+                                                           FontSize="12" Foreground="#585E72"/>
                                             </WrapPanel>
                                         </StackPanel>
                                     </Grid>
@@ -216,76 +211,76 @@
             </Border>
 
             <!-- Event Correlations -->
-            <Border Background="#0D1220" CornerRadius="16" Padding="20"
-                    BorderBrush="#1E2D4A" BorderThickness="1"
+            <Border Background="#1D2338" CornerRadius="16" Padding="20"
+                    BorderBrush="#3D4563" BorderThickness="1"
                     IsVisible="{Binding HasData}">
                 <StackPanel Spacing="12">
                     <Grid ColumnDefinitions="*,Auto">
                         <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
                             <TextBlock Text="Event Correlations" FontSize="14" FontWeight="SemiBold"
-                                       Foreground="#E8E9ED" LetterSpacing="-0.3"/>
-                            <Border Background="#0A1428" CornerRadius="100" Padding="10,3"
-                                    BorderBrush="#1A2D5A" BorderThickness="1"
+                                       Foreground="#E8E9F0" LetterSpacing="-0.3"/>
+                            <Border Background="#1A2744" CornerRadius="100" Padding="10,3"
+                                    BorderBrush="#3D4563" BorderThickness="1"
                                     VerticalAlignment="Center" IsVisible="{Binding HasCorrelations}">
                                 <TextBlock Text="{Binding CorrelationCount, StringFormat='{}{0} groups'}"
-                                           FontSize="12" FontWeight="Medium" Foreground="#3b82f6"/>
+                                           FontSize="12" FontWeight="Medium" Foreground="#60A5FA"/>
                             </Border>
                         </StackPanel>
                     </Grid>
 
                     <StackPanel Orientation="Horizontal" Spacing="10" IsVisible="{Binding NoCorrelations}">
-                        <TextBlock Text="○" FontSize="16" Foreground="#4A5670" VerticalAlignment="Center"/>
+                        <TextBlock Text="○" FontSize="16" Foreground="#585E72" VerticalAlignment="Center"/>
                         <TextBlock Text="No event correlations detected."
-                                   FontSize="13" Foreground="#8899B4" VerticalAlignment="Center"/>
+                                   FontSize="13" Foreground="#767C96" VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <ItemsControl x:CompileBindings="False" ItemsSource="{Binding Correlations}"
                                   IsVisible="{Binding HasCorrelations}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="#080C16" CornerRadius="12" Margin="0,0,0,6"
-                                        BorderBrush="#1E2D4A" BorderThickness="1">
+                                <Border Background="#262C44" CornerRadius="12" Margin="0,0,0,6"
+                                        BorderBrush="#3D4563" BorderThickness="1">
                                     <Expander>
                                         <Expander.Header>
                                             <Grid ColumnDefinitions="*,Auto" Margin="4,0">
                                                 <StackPanel Spacing="4">
                                                     <StackPanel Orientation="Horizontal" Spacing="8">
                                                         <TextBlock Text="{Binding Name}" FontSize="13" FontWeight="SemiBold"
-                                                                   Foreground="#F0F4FF" VerticalAlignment="Center"/>
+                                                                   Foreground="#E8E9F0" VerticalAlignment="Center"/>
                                                         <Border CornerRadius="100" Padding="10,3" VerticalAlignment="Center"
                                                                 Background="{Binding CorrelationType, Converter={StaticResource CorrelationTypeToColorConverter}}">
                                                             <TextBlock Text="{Binding CorrelationType}" FontSize="11" FontWeight="Medium" Foreground="White"/>
                                                         </Border>
                                                     </StackPanel>
-                                                    <TextBlock Text="{Binding Description}" FontSize="12" Foreground="#8899B4" TextWrapping="Wrap"/>
+                                                    <TextBlock Text="{Binding Description}" FontSize="12" Foreground="#9BA2BE" TextWrapping="Wrap"/>
                                                 </StackPanel>
                                                 <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Right"
                                                             Spacing="4" Margin="12,0,4,0">
                                                     <TextBlock Text="{Binding EventEntries.Count, StringFormat='{}{0} events'}"
-                                                               FontSize="12" Foreground="#4A5670" HorizontalAlignment="Right"/>
+                                                               FontSize="12" Foreground="#585E72" HorizontalAlignment="Right"/>
                                                     <TextBlock Text="{Binding DetectedAt, StringFormat='{}{0:HH:mm:ss} UTC'}"
-                                                               FontSize="12" Foreground="#4A5670" HorizontalAlignment="Right"/>
+                                                               FontSize="12" Foreground="#585E72" HorizontalAlignment="Right"/>
                                                 </StackPanel>
                                             </Grid>
                                         </Expander.Header>
-                                        <Border Background="#060A14" CornerRadius="0,0,12,12" Padding="12,8">
+                                        <Border Background="#1D2338" CornerRadius="0,0,12,12" Padding="12,8">
                                             <StackPanel Spacing="4">
                                                 <Grid ColumnDefinitions="70,60,180,*,90" Margin="0,0,0,4">
-                                                    <TextBlock Text="LEVEL"    FontSize="10" FontWeight="Medium" Foreground="#4A5670" LetterSpacing="1"/>
-                                                    <TextBlock Text="ID"       FontSize="10" FontWeight="Medium" Foreground="#4A5670" LetterSpacing="1" Grid.Column="1"/>
-                                                    <TextBlock Text="SOURCE"   FontSize="10" FontWeight="Medium" Foreground="#4A5670" LetterSpacing="1" Grid.Column="2"/>
-                                                    <TextBlock Text="MESSAGE"  FontSize="10" FontWeight="Medium" Foreground="#4A5670" LetterSpacing="1" Grid.Column="3"/>
-                                                    <TextBlock Text="TIME"     FontSize="10" FontWeight="Medium" Foreground="#4A5670" LetterSpacing="1" Grid.Column="4"/>
+                                                    <TextBlock Text="LEVEL"   FontSize="10" FontWeight="Medium" Foreground="#585E72" LetterSpacing="1"/>
+                                                    <TextBlock Text="ID"      FontSize="10" FontWeight="Medium" Foreground="#585E72" LetterSpacing="1" Grid.Column="1"/>
+                                                    <TextBlock Text="SOURCE"  FontSize="10" FontWeight="Medium" Foreground="#585E72" LetterSpacing="1" Grid.Column="2"/>
+                                                    <TextBlock Text="MESSAGE" FontSize="10" FontWeight="Medium" Foreground="#585E72" LetterSpacing="1" Grid.Column="3"/>
+                                                    <TextBlock Text="TIME"    FontSize="10" FontWeight="Medium" Foreground="#585E72" LetterSpacing="1" Grid.Column="4"/>
                                                 </Grid>
                                                 <ItemsControl x:CompileBindings="False" ItemsSource="{Binding EventEntries}">
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
                                                             <Grid ColumnDefinitions="70,60,180,*,90" Margin="0,2">
-                                                                <TextBlock Text="{Binding Level}" FontSize="13" Foreground="#E8E9ED" VerticalAlignment="Center"/>
-                                                                <TextBlock Text="{Binding EventId}" FontSize="13" Foreground="#8899B4" Grid.Column="1" VerticalAlignment="Center"/>
-                                                                <TextBlock Text="{Binding Source}" FontSize="13" Foreground="#8899B4" Grid.Column="2" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
-                                                                <TextBlock Text="{Binding Message}" FontSize="13" Foreground="#4A5670" Grid.Column="3" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
-                                                                <TextBlock Text="{Binding TimeCreated, StringFormat='{}{0:HH:mm:ss}'}" FontSize="13" Foreground="#4A5670" Grid.Column="4" VerticalAlignment="Center"/>
+                                                                <TextBlock Text="{Binding Level}" FontSize="13" Foreground="#E8E9F0" VerticalAlignment="Center"/>
+                                                                <TextBlock Text="{Binding EventId}" FontSize="13" Foreground="#9BA2BE" Grid.Column="1" VerticalAlignment="Center"/>
+                                                                <TextBlock Text="{Binding Source}" FontSize="13" Foreground="#9BA2BE" Grid.Column="2" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                                                                <TextBlock Text="{Binding Message}" FontSize="13" Foreground="#767C96" Grid.Column="3" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+                                                                <TextBlock Text="{Binding TimeCreated, StringFormat='{}{0:HH:mm:ss}'}" FontSize="13" Foreground="#767C96" Grid.Column="4" VerticalAlignment="Center"/>
                                                             </Grid>
                                                         </DataTemplate>
                                                     </ItemsControl.ItemTemplate>
