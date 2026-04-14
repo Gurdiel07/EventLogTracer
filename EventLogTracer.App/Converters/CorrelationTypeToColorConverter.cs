@@ -9,15 +9,15 @@ public class CorrelationTypeToColorConverter : IValueConverter
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         if (value is not string type)
-            return new SolidColorBrush(Color.Parse("#555555"));
+            return new SolidColorBrush(Color.Parse("#6B6F82"));
 
         return type switch
         {
-            "Burst"            => new SolidColorBrush(Color.Parse("#767676")),
+            "Burst"            => new SolidColorBrush(Color.Parse("#6B6F82")),
             "ErrorCascade"     => new SolidColorBrush(Color.Parse("#D13438")),
-            "AuthSequence"     => new SolidColorBrush(Color.Parse("#0078D4")),
+            "AuthSequence"     => new SolidColorBrush(Color.Parse("#3b82f6")),
             "ServiceLifecycle" => new SolidColorBrush(Color.Parse("#FF8C00")),
-            _                  => new SolidColorBrush(Color.Parse("#555555")),
+            _                  => new SolidColorBrush(Color.Parse("#6B6F82")),
         };
     }
 

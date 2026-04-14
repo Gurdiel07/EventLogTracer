@@ -14,7 +14,7 @@ public class NotificationTypeToColorConverter : IValueConverter
 
         return type switch
         {
-            NotificationType.Desktop => new SolidColorBrush(Color.Parse("#0078D4")),
+            NotificationType.Desktop => new SolidColorBrush(Color.Parse("#3b82f6")),
             NotificationType.Email   => new SolidColorBrush(Color.Parse("#107C10")),
             NotificationType.Webhook => new SolidColorBrush(Color.Parse("#D83B01")),
             _                        => new SolidColorBrush(Colors.Gray)

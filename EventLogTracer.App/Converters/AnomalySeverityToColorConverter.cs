@@ -17,7 +17,7 @@ public class AnomalySeverityToColorConverter : IValueConverter
             AnomalySeverity.Critical => new SolidColorBrush(Color.Parse("#E81123")),
             AnomalySeverity.High     => new SolidColorBrush(Color.Parse("#D83B01")),
             AnomalySeverity.Medium   => new SolidColorBrush(Color.Parse("#FF8C00")),
-            AnomalySeverity.Low      => new SolidColorBrush(Color.Parse("#0078D4")),
+            AnomalySeverity.Low      => new SolidColorBrush(Color.Parse("#3b82f6")),
             _                        => new SolidColorBrush(Colors.Gray)
         };
     }

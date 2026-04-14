@@ -16,11 +16,11 @@
         <converters:CorrelationTypeToColorConverter      x:Key="CorrelationTypeToColorConverter"/>
 
         <!-- Global accent colours -->
-        <SolidColorBrush x:Key="AccentBrush"   Color="#0078D4"/>
+        <SolidColorBrush x:Key="AccentBrush"   Color="#3b82f6"/>
         <SolidColorBrush x:Key="CriticalBrush" Color="#E81123"/>
         <SolidColorBrush x:Key="ErrorBrush"    Color="#D13438"/>
         <SolidColorBrush x:Key="WarningBrush"  Color="#FF8C00"/>
-        <SolidColorBrush x:Key="InfoBrush"     Color="#0078D4"/>
+        <SolidColorBrush x:Key="InfoBrush"     Color="#3b82f6"/>
         <SolidColorBrush x:Key="VerboseBrush"  Color="#767676"/>
     </Application.Resources>
 

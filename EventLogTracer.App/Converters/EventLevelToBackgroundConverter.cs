@@ -21,11 +21,11 @@ public class EventLevelToBackgroundConverter : IValueConverter
 
         return level switch
         {
-            EventLevel.Critical    => Brush(badge ? "#E81123" : "#3D1518"),
-            EventLevel.Error       => Brush(badge ? "#D13438" : "#2D1518"),
-            EventLevel.Warning     => Brush(badge ? "#FF8C00" : "#2D2A15"),
-            EventLevel.Information => Brush(badge ? "#0078D4" : "#222222"),
-            EventLevel.Verbose     => Brush(badge ? "#767676" : "#1E1E1E"),
+            EventLevel.Critical    => Brush(badge ? "#E81123" : "#2A1520"),
+            EventLevel.Error       => Brush(badge ? "#D13438" : "#221520"),
+            EventLevel.Warning     => Brush(badge ? "#FF8C00" : "#22201A"),
+            EventLevel.Information => Brush(badge ? "#3b82f6" : "#141824"),
+            EventLevel.Verbose     => Brush(badge ? "#767676" : "#161A24"),
             _                      => Brushes.Transparent
         };
     }

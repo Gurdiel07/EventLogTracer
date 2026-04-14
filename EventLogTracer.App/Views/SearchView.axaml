@@ -18,22 +18,22 @@
              COLUMN 0 — Saved Queries Sidebar
              ══════════════════════════════════════════════════ -->
         <Border Grid.Column="0"
-                Background="#141414"
-                BorderBrush="#2A2A2A"
+                Background="#12151C"
+                BorderBrush="#2E3348"
                 BorderThickness="0,0,1,0">
             <DockPanel>
 
                 <!-- Header -->
                 <Border DockPanel.Dock="Top"
                         Padding="14,14,12,12"
-                        BorderBrush="#2A2A2A"
+                        BorderBrush="#2E3348"
                         BorderThickness="0,0,0,1">
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <TextBlock Text="🔖"  FontSize="13" VerticalAlignment="Center"/>
                         <TextBlock Text="Saved Queries"
                                    FontSize="13"
                                    FontWeight="SemiBold"
-                                   Foreground="#CCCCCC"
+                                   Foreground="#E8E9ED"
                                    VerticalAlignment="Center"/>
                     </StackPanel>
                 </Border>
@@ -41,7 +41,7 @@
                 <!-- Empty state -->
                 <TextBlock DockPanel.Dock="Top"
                            Text="No saved queries yet"
-                           Foreground="#555555"
+                           Foreground="#6B6F82"
                            FontSize="12"
                            HorizontalAlignment="Center"
                            Margin="16,28,16,0"
@@ -59,9 +59,9 @@
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,0,0,5">
-                                    <Border Background="#1E1E1E"
-                                            CornerRadius="5"
-                                            BorderBrush="#2A2A2A"
+                                    <Border Background="#1E2230"
+                                            CornerRadius="8"
+                                            BorderBrush="#2E3348"
                                             BorderThickness="1">
 
                                         <!-- Load button fills the item -->
@@ -81,12 +81,12 @@
                                                            FontSize="12"
                                                            TextTrimming="CharacterEllipsis"/>
                                                 <TextBlock Text="{Binding QueryExpression}"
-                                                           Foreground="#777777"
+                                                           Foreground="#6B6F82"
                                                            FontSize="11"
                                                            TextTrimming="CharacterEllipsis"
                                                            MaxLines="1"/>
                                                 <TextBlock Text="{Binding UseCount, StringFormat='Used {0}×'}"
-                                                           Foreground="#555555"
+                                                           Foreground="#6B6F82"
                                                            FontSize="10"/>
                                             </StackPanel>
                                         </Button>
@@ -102,7 +102,7 @@
                                             Content="✕"
                                             Background="Transparent"
                                             BorderThickness="0"
-                                            Foreground="#666666"
+                                            Foreground="#6B6F82"
                                             FontSize="11"
                                             Padding="4,2"
                                             Cursor="Hand"
@@ -133,7 +133,7 @@
                            Foreground="#FFFFFF"/>
                 <TextBlock Text="Advanced query syntax with regex, field filters, and boolean operators"
                            FontSize="12"
-                           Foreground="#777777"
+                           Foreground="#6B6F82"
                            Margin="0,4,0,0"/>
             </StackPanel>
 
@@ -150,7 +150,7 @@
                              Watermark="Search events… (e.g. level:Error AND /failed.*logon/)"
                              FontSize="15"
                              Padding="12,10"
-                             Background="#2D2D2D"
+                             Background="#242838"
                              Foreground="#FFFFFF"
                              CornerRadius="4"
                              AcceptsReturn="False"/>
@@ -190,7 +190,7 @@
                              Width="140"
                              FontSize="13"
                              Padding="8,10"
-                             Background="#2D2D2D"
+                             Background="#242838"
                              Foreground="#FFFFFF"
                              CornerRadius="4"
                              Margin="6,0,0,0"/>
@@ -225,7 +225,7 @@
                                            Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
                     <TextBlock Grid.Column="1"
                                Text="{Binding SearchDuration}"
-                               Foreground="#666666"
+                               Foreground="#6B6F82"
                                FontSize="12"
                                IsVisible="{Binding SearchDuration,
                                            Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
@@ -241,12 +241,12 @@
                 <!-- From date -->
                 <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,12,4">
                     <TextBlock Text="From:"
-                               Foreground="#999999"
+                               Foreground="#A0A4B8"
                                FontSize="12"
                                VerticalAlignment="Center"/>
                     <CalendarDatePicker SelectedDate="{Binding DateFrom}"
                                         Watermark="Start date"
-                                        Background="#2D2D2D"
+                                        Background="#242838"
                                         Foreground="#FFFFFF"
                                         Width="140"/>
                 </StackPanel>
@@ -254,19 +254,19 @@
                 <!-- To date -->
                 <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,0,12,4">
                     <TextBlock Text="To:"
-                               Foreground="#999999"
+                               Foreground="#A0A4B8"
                                FontSize="12"
                                VerticalAlignment="Center"/>
                     <CalendarDatePicker SelectedDate="{Binding DateTo}"
                                         Watermark="End date"
-                                        Background="#2D2D2D"
+                                        Background="#242838"
                                         Foreground="#FFFFFF"
                                         Width="140"/>
                 </StackPanel>
 
                 <!-- Result count badge (shown after a search) -->
                 <Border CornerRadius="10"
-                        Background="#0078D4"
+                        Background="#3b82f6"
                         Padding="10,4"
                         Margin="0,0,10,4"
                         VerticalAlignment="Center"
@@ -300,12 +300,12 @@
                               IsReadOnly="True"
                               CanUserResizeColumns="True"
                               CanUserSortColumns="True"
-                              Background="#1C1C1C"
+                              Background="#101318"
                               GridLinesVisibility="Horizontal"
                               HeadersVisibility="Column"
-                              BorderBrush="#2A2A2A"
+                              BorderBrush="#2E3348"
                               BorderThickness="1"
-                              CornerRadius="6">
+                              CornerRadius="8">
 
                         <DataGrid.Styles>
                             <Style Selector="DataGridRow">
@@ -404,10 +404,10 @@
                         <TextBlock Text="🔍"
                                    FontSize="36"
                                    HorizontalAlignment="Center"
-                                   Foreground="#444444"/>
+                                   Foreground="#6B6F82"/>
                         <TextBlock Text="No results found for your query."
                                    FontSize="14"
-                                   Foreground="#666666"
+                                   Foreground="#6B6F82"
                                    HorizontalAlignment="Center"/>
                     </StackPanel>
 
@@ -415,10 +415,10 @@
 
                 <!-- ── Detail panel (shown when an event row is selected) ── -->
                 <Border Grid.Row="1"
-                        Background="#141414"
-                        BorderBrush="#2A2A2A"
+                        Background="#12151C"
+                        BorderBrush="#2E3348"
                         BorderThickness="0,1,0,0"
-                        CornerRadius="0,0,6,6"
+                        CornerRadius="0,0,8,8"
                         IsVisible="{Binding SelectedResult,
                                     Converter={x:Static ObjectConverters.IsNotNull}}">
 
@@ -428,13 +428,13 @@
                             <!-- ── Metadata row 1 ── -->
                             <WrapPanel Orientation="Horizontal">
                                 <StackPanel Width="120" Margin="0,0,16,8">
-                                    <TextBlock Text="Event ID" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="Event ID" FontSize="10" Foreground="#6B6F82"/>
                                     <TextBlock Text="{Binding SelectedResult.EventId}"
                                                FontSize="15" FontWeight="SemiBold" Foreground="#FFFFFF"/>
                                 </StackPanel>
 
                                 <StackPanel Width="130" Margin="0,0,16,8">
-                                    <TextBlock Text="Level" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="Level" FontSize="10" Foreground="#6B6F82"/>
                                     <Border CornerRadius="4" Padding="10,3"
                                             HorizontalAlignment="Left" Margin="0,2,0,0"
                                             x:CompileBindings="False"
@@ -447,45 +447,45 @@
                                 </StackPanel>
 
                                 <StackPanel MinWidth="200" Margin="0,0,16,8">
-                                    <TextBlock Text="Source" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="Source" FontSize="10" Foreground="#6B6F82"/>
                                     <TextBlock Text="{Binding SelectedResult.Source}"
-                                               FontSize="13" Foreground="#CCCCCC"/>
+                                               FontSize="13" Foreground="#E8E9ED"/>
                                 </StackPanel>
 
                                 <StackPanel Margin="0,0,16,8">
-                                    <TextBlock Text="Time Created" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="Time Created" FontSize="10" Foreground="#6B6F82"/>
                                     <TextBlock Text="{Binding SelectedResult.TimeCreated,
                                                       StringFormat='{}{0:yyyy-MM-dd HH:mm:ss.fff}'}"
-                                               FontSize="13" Foreground="#CCCCCC"/>
+                                               FontSize="13" Foreground="#E8E9ED"/>
                                 </StackPanel>
                             </WrapPanel>
 
                             <!-- ── Metadata row 2 ── -->
                             <WrapPanel Orientation="Horizontal">
                                 <StackPanel Width="120" Margin="0,0,16,8">
-                                    <TextBlock Text="Log Name" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="Log Name" FontSize="10" Foreground="#6B6F82"/>
                                     <TextBlock Text="{Binding SelectedResult.LogName}"
-                                               FontSize="13" Foreground="#CCCCCC"/>
+                                               FontSize="13" Foreground="#E8E9ED"/>
                                 </StackPanel>
                                 <StackPanel Width="160" Margin="0,0,16,8">
-                                    <TextBlock Text="Machine" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="Machine" FontSize="10" Foreground="#6B6F82"/>
                                     <TextBlock Text="{Binding SelectedResult.MachineName}"
-                                               FontSize="13" Foreground="#CCCCCC"/>
+                                               FontSize="13" Foreground="#E8E9ED"/>
                                 </StackPanel>
                                 <StackPanel Width="140" Margin="0,0,16,8">
-                                    <TextBlock Text="Category" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="Category" FontSize="10" Foreground="#6B6F82"/>
                                     <TextBlock Text="{Binding SelectedResult.Category, FallbackValue='—'}"
-                                               FontSize="13" Foreground="#CCCCCC"/>
+                                               FontSize="13" Foreground="#E8E9ED"/>
                                 </StackPanel>
                                 <StackPanel Width="180" Margin="0,0,16,8">
-                                    <TextBlock Text="User ID" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="User ID" FontSize="10" Foreground="#6B6F82"/>
                                     <TextBlock Text="{Binding SelectedResult.UserId, FallbackValue='—'}"
-                                               FontSize="13" Foreground="#CCCCCC"/>
+                                               FontSize="13" Foreground="#E8E9ED"/>
                                 </StackPanel>
                                 <StackPanel Margin="0,0,16,8">
-                                    <TextBlock Text="Keywords" FontSize="10" Foreground="#666666"/>
+                                    <TextBlock Text="Keywords" FontSize="10" Foreground="#6B6F82"/>
                                     <TextBlock Text="{Binding SelectedResult.Keywords, FallbackValue='—'}"
-                                               FontSize="13" Foreground="#CCCCCC"/>
+                                               FontSize="13" Foreground="#E8E9ED"/>
                                 </StackPanel>
                             </WrapPanel>
 
@@ -500,11 +500,11 @@
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Background="#2D2D2D" CornerRadius="10"
+                                            <Border Background="#242838" CornerRadius="10"
                                                     Padding="8,3" Margin="0,0,6,4">
                                                 <StackPanel Orientation="Horizontal" Spacing="4">
                                                     <TextBlock Text="{Binding}"
-                                                               Foreground="#CCCCCC"
+                                                               Foreground="#E8E9ED"
                                                                FontSize="11"
                                                                VerticalAlignment="Center"/>
                                                     <Button Content="✕"
@@ -512,7 +512,7 @@
                                                             CommandParameter="{Binding}"
                                                             Background="Transparent"
                                                             BorderThickness="0"
-                                                            Foreground="#666666"
+                                                            Foreground="#6B6F82"
                                                             FontSize="9"
                                                             Padding="2,0"
                                                             Cursor="Hand"/>
@@ -528,7 +528,7 @@
                                              Width="160"
                                              FontSize="12"
                                              Padding="7,4"
-                                             Background="#222222"
+                                             Background="#242838"
                                              Foreground="#FFFFFF"
                                              CornerRadius="4"/>
                                     <Button Content="Add Tag"
@@ -543,13 +543,13 @@
 
                             <!-- ── Message ── -->
                             <StackPanel Spacing="4">
-                                <TextBlock Text="Message" FontSize="10" Foreground="#666666"/>
-                                <Border Background="#111111" CornerRadius="4" Padding="12,10"
-                                        BorderBrush="#2A2A2A" BorderThickness="1">
+                                <TextBlock Text="Message" FontSize="10" Foreground="#6B6F82"/>
+                                <Border Background="#0E1118" CornerRadius="4" Padding="12,10"
+                                        BorderBrush="#2E3348" BorderThickness="1">
                                     <ScrollViewer MaxHeight="80" VerticalScrollBarVisibility="Auto">
                                         <TextBlock Text="{Binding SelectedResult.Message}"
                                                    TextWrapping="Wrap"
-                                                   Foreground="#CCCCCC"
+                                                   Foreground="#E8E9ED"
                                                    FontSize="12"
                                                    FontFamily="Consolas, Menlo, monospace"/>
                                     </ScrollViewer>
@@ -557,7 +557,7 @@
                             </StackPanel>
 
                             <!-- ── Bookmark controls ── -->
-                            <Border Background="#1A1A1A" CornerRadius="6" Padding="12,10">
+                            <Border Background="#1E2230" CornerRadius="6" Padding="12,10">
                                 <StackPanel Orientation="Horizontal" Spacing="10">
                                     <Button Command="{Binding ToggleBookmarkCommand}"
                                             CommandParameter="{Binding SelectedResult}"
@@ -567,7 +567,7 @@
                                         <StackPanel Orientation="Horizontal" Spacing="6">
                                             <TextBlock Text="★" Foreground="#FFD700"
                                                        FontSize="14" VerticalAlignment="Center"/>
-                                            <TextBlock Text="Bookmark" Foreground="#CCCCCC"
+                                            <TextBlock Text="Bookmark" Foreground="#E8E9ED"
                                                        VerticalAlignment="Center"/>
                                         </StackPanel>
                                     </Button>
@@ -575,7 +575,7 @@
                                     <TextBox Text="{Binding SelectedResult.BookmarkComment, Mode=TwoWay}"
                                              Watermark="Add a comment…"
                                              Width="320"
-                                             Background="#222222"
+                                             Background="#242838"
                                              Foreground="#FFFFFF"
                                              CornerRadius="4"
                                              Padding="8,5"/>
