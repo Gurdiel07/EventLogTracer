@@ -34,8 +34,7 @@
                     BorderBrush="#3D4563" BorderThickness="1"
                     IsVisible="{Binding NoData}">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
-                    <TextBlock Text="⚡" FontSize="64" HorizontalAlignment="Center"
-                               Foreground="#60A5FA"/>
+                    <TextBlock Text="⚡" FontSize="64" HorizontalAlignment="Center" Foreground="#60A5FA"/>
                     <TextBlock Text="Welcome to Event Log Tracer"
                                FontSize="28" FontWeight="Bold" Foreground="#E8E9F0"
                                HorizontalAlignment="Center" LetterSpacing="-1"/>
@@ -44,61 +43,101 @@
                 </StackPanel>
             </Border>
 
-            <!-- Summary cards -->
+            <!-- Summary cards — horizontal layout with semantic icon -->
             <WrapPanel Orientation="Horizontal" IsVisible="{Binding HasData}">
 
-                <Border Background="#1D2338" CornerRadius="12" Padding="20"
-                        Margin="0,0,12,10" Width="175"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20,18"
+                        Margin="0,0,12,10" MinWidth="195"
                         BorderBrush="#3D4563" BorderThickness="1">
-                    <StackPanel>
-                        <TextBlock Text="CRITICAL" Foreground="#E81123"
-                                   FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
-                        <TextBlock Text="{Binding CriticalCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
+                    <StackPanel Orientation="Horizontal" Spacing="14">
+                        <Border Width="44" Height="44" CornerRadius="10"
+                                Background="#1F1215" BorderBrush="#4A1520" BorderThickness="1"
+                                VerticalAlignment="Center">
+                            <TextBlock Text="C" FontSize="18" FontWeight="Bold" Foreground="#E81123"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="CRITICAL" Foreground="#767C96"
+                                       FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
+                            <TextBlock Text="{Binding CriticalCount}" FontSize="28" FontWeight="Bold"
+                                       Foreground="#E8E9F0" Margin="0,2,0,0" LetterSpacing="-1"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
 
-                <Border Background="#1D2338" CornerRadius="12" Padding="20"
-                        Margin="0,0,12,10" Width="175"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20,18"
+                        Margin="0,0,12,10" MinWidth="195"
                         BorderBrush="#3D4563" BorderThickness="1">
-                    <StackPanel>
-                        <TextBlock Text="ERROR" Foreground="#D13438"
-                                   FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
-                        <TextBlock Text="{Binding ErrorCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
+                    <StackPanel Orientation="Horizontal" Spacing="14">
+                        <Border Width="44" Height="44" CornerRadius="10"
+                                Background="#1A1215" BorderBrush="#3A1520" BorderThickness="1"
+                                VerticalAlignment="Center">
+                            <TextBlock Text="E" FontSize="18" FontWeight="Bold" Foreground="#D13438"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="ERROR" Foreground="#767C96"
+                                       FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
+                            <TextBlock Text="{Binding ErrorCount}" FontSize="28" FontWeight="Bold"
+                                       Foreground="#E8E9F0" Margin="0,2,0,0" LetterSpacing="-1"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
 
-                <Border Background="#1D2338" CornerRadius="12" Padding="20"
-                        Margin="0,0,12,10" Width="175"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20,18"
+                        Margin="0,0,12,10" MinWidth="195"
                         BorderBrush="#3D4563" BorderThickness="1">
-                    <StackPanel>
-                        <TextBlock Text="WARNING" Foreground="#FF8C00"
-                                   FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
-                        <TextBlock Text="{Binding WarningCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
+                    <StackPanel Orientation="Horizontal" Spacing="14">
+                        <Border Width="44" Height="44" CornerRadius="10"
+                                Background="#1A1810" BorderBrush="#3A3015" BorderThickness="1"
+                                VerticalAlignment="Center">
+                            <TextBlock Text="W" FontSize="18" FontWeight="Bold" Foreground="#FF8C00"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="WARNING" Foreground="#767C96"
+                                       FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
+                            <TextBlock Text="{Binding WarningCount}" FontSize="28" FontWeight="Bold"
+                                       Foreground="#E8E9F0" Margin="0,2,0,0" LetterSpacing="-1"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
 
-                <Border Background="#1D2338" CornerRadius="12" Padding="20"
-                        Margin="0,0,12,10" Width="175"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20,18"
+                        Margin="0,0,12,10" MinWidth="195"
                         BorderBrush="#3D4563" BorderThickness="1">
-                    <StackPanel>
-                        <TextBlock Text="INFORMATION" Foreground="#3B82F6"
-                                   FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
-                        <TextBlock Text="{Binding InformationCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
+                    <StackPanel Orientation="Horizontal" Spacing="14">
+                        <Border Width="44" Height="44" CornerRadius="10"
+                                Background="#0F1530" BorderBrush="#1A2D5A" BorderThickness="1"
+                                VerticalAlignment="Center">
+                            <TextBlock Text="I" FontSize="18" FontWeight="Bold" Foreground="#3B82F6"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="INFORMATION" Foreground="#767C96"
+                                       FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
+                            <TextBlock Text="{Binding InformationCount}" FontSize="28" FontWeight="Bold"
+                                       Foreground="#E8E9F0" Margin="0,2,0,0" LetterSpacing="-1"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
 
-                <Border Background="#1D2338" CornerRadius="12" Padding="20"
-                        Margin="0,0,0,10" Width="175"
+                <Border Background="#1D2338" CornerRadius="12" Padding="20,18"
+                        Margin="0,0,0,10" MinWidth="195"
                         BorderBrush="#3B82F6" BorderThickness="1">
-                    <StackPanel>
-                        <TextBlock Text="TOTAL (24H)" Foreground="#9BA2BE"
-                                   FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
-                        <TextBlock Text="{Binding TotalCount}" FontSize="32" FontWeight="Bold"
-                                   Foreground="#E8E9F0" Margin="0,6,0,0" LetterSpacing="-1"/>
+                    <StackPanel Orientation="Horizontal" Spacing="14">
+                        <Border Width="44" Height="44" CornerRadius="10"
+                                Background="#0F1530" BorderBrush="#1A2D5A" BorderThickness="1"
+                                VerticalAlignment="Center">
+                            <TextBlock Text="Σ" FontSize="18" FontWeight="Bold" Foreground="#60A5FA"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="TOTAL (24H)" Foreground="#767C96"
+                                       FontSize="11" FontWeight="Medium" LetterSpacing="1"/>
+                            <TextBlock Text="{Binding TotalCount}" FontSize="28" FontWeight="Bold"
+                                       Foreground="#E8E9F0" Margin="0,2,0,0" LetterSpacing="-1"/>
+                        </StackPanel>
                     </StackPanel>
                 </Border>
 
@@ -108,24 +147,32 @@
             <Grid ColumnDefinitions="*,*" IsVisible="{Binding HasData}">
                 <Border Grid.Column="0" Background="#1D2338" CornerRadius="16" Padding="20"
                         Margin="0,0,10,0" BorderBrush="#3D4563" BorderThickness="1">
-                    <StackPanel Spacing="12">
+                    <StackPanel>
                         <TextBlock Text="Event Level Distribution" FontSize="14" FontWeight="SemiBold"
-                                   Foreground="#E8E9F0" LetterSpacing="-0.3"/>
-                        <lvc:PieChart x:CompileBindings="False"
-                                      Series="{Binding LevelPieSeries}" LegendPosition="Bottom"
-                                      LegendTextPaint="{Binding LegendTextPaint}"
-                                      Height="270" Background="Transparent"/>
+                                   Foreground="#E8E9F0" LetterSpacing="-0.15"/>
+                        <Border Height="1" Background="#3D4563" Margin="0,12,0,12"/>
+                        <Border Background="#0F1320" CornerRadius="10" Padding="12"
+                                BorderBrush="#3D4563" BorderThickness="1">
+                            <lvc:PieChart x:CompileBindings="False"
+                                          Series="{Binding LevelPieSeries}" LegendPosition="Bottom"
+                                          LegendTextPaint="{Binding LegendTextPaint}"
+                                          Height="250" Background="Transparent"/>
+                        </Border>
                     </StackPanel>
                 </Border>
                 <Border Grid.Column="1" Background="#1D2338" CornerRadius="16" Padding="20"
                         Margin="10,0,0,0" BorderBrush="#3D4563" BorderThickness="1">
-                    <StackPanel Spacing="12">
+                    <StackPanel>
                         <TextBlock Text="Events Over Time (24h)" FontSize="14" FontWeight="SemiBold"
-                                   Foreground="#E8E9F0" LetterSpacing="-0.3"/>
-                        <lvc:CartesianChart x:CompileBindings="False"
-                                            Series="{Binding EventsTimelineSeries}"
-                                            XAxes="{Binding TimelineXAxes}" YAxes="{Binding TimelineYAxes}"
-                                            Height="270" Background="Transparent" TooltipPosition="Top"/>
+                                   Foreground="#E8E9F0" LetterSpacing="-0.15"/>
+                        <Border Height="1" Background="#3D4563" Margin="0,12,0,12"/>
+                        <Border Background="#0F1320" CornerRadius="10" Padding="12"
+                                BorderBrush="#3D4563" BorderThickness="1">
+                            <lvc:CartesianChart x:CompileBindings="False"
+                                                Series="{Binding EventsTimelineSeries}"
+                                                XAxes="{Binding TimelineXAxes}" YAxes="{Binding TimelineYAxes}"
+                                                Height="250" Background="Transparent" TooltipPosition="Top"/>
+                        </Border>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -134,13 +181,17 @@
             <Border Background="#1D2338" CornerRadius="16" Padding="20"
                     BorderBrush="#3D4563" BorderThickness="1"
                     IsVisible="{Binding HasData}">
-                <StackPanel Spacing="12">
+                <StackPanel>
                     <TextBlock Text="Top 10 Event Sources" FontSize="14" FontWeight="SemiBold"
-                               Foreground="#E8E9F0" LetterSpacing="-0.3"/>
-                    <lvc:CartesianChart x:CompileBindings="False"
-                                        Series="{Binding TopSourcesBarSeries}"
-                                        XAxes="{Binding SourcesXAxes}" YAxes="{Binding SourcesYAxes}"
-                                        Height="340" Background="Transparent" TooltipPosition="Top"/>
+                               Foreground="#E8E9F0" LetterSpacing="-0.15"/>
+                    <Border Height="1" Background="#3D4563" Margin="0,12,0,12"/>
+                    <Border Background="#0F1320" CornerRadius="10" Padding="12"
+                            BorderBrush="#3D4563" BorderThickness="1">
+                        <lvc:CartesianChart x:CompileBindings="False"
+                                            Series="{Binding TopSourcesBarSeries}"
+                                            XAxes="{Binding SourcesXAxes}" YAxes="{Binding SourcesYAxes}"
+                                            Height="320" Background="Transparent" TooltipPosition="Top"/>
+                    </Border>
                 </StackPanel>
             </Border>
 
@@ -148,16 +199,16 @@
             <Border Background="#1D2338" CornerRadius="16" Padding="20"
                     BorderBrush="#3D4563" BorderThickness="1"
                     IsVisible="{Binding HasData}">
-                <StackPanel Spacing="12">
+                <StackPanel>
                     <Grid ColumnDefinitions="*,Auto">
                         <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
                             <TextBlock Text="Anomaly Detection" FontSize="14" FontWeight="SemiBold"
-                                       Foreground="#E8E9F0" LetterSpacing="-0.3"/>
-                            <Border Background="#3D1518" CornerRadius="100" Padding="10,3"
+                                       Foreground="#E8E9F0" LetterSpacing="-0.15"/>
+                            <Border Background="#3D1518" CornerRadius="100" Padding="8,3"
                                     BorderBrush="#5C2B30" BorderThickness="1"
                                     VerticalAlignment="Center" IsVisible="{Binding HasAnomalies}">
                                 <TextBlock Text="{Binding AnomalyCount, StringFormat='{}{0} detected'}"
-                                           FontSize="12" FontWeight="Medium" Foreground="#EF4444"/>
+                                           FontSize="11" FontWeight="Medium" Foreground="#EF4444"/>
                             </Border>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
@@ -167,8 +218,10 @@
                                     IsEnabled="{Binding !IsDetectingAnomalies}"/>
                         </StackPanel>
                     </Grid>
+                    <Border Height="1" Background="#3D4563" Margin="0,12,0,12"/>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10" IsVisible="{Binding NoAnomalies}">
+                    <StackPanel Orientation="Horizontal" Spacing="10" IsVisible="{Binding NoAnomalies}"
+                                Margin="0,8,0,8">
                         <TextBlock Text="✓" FontSize="18" Foreground="#22C55E" VerticalAlignment="Center"/>
                         <TextBlock Text="No anomalies detected in the last 24 hours."
                                    FontSize="13" Foreground="#767C96" VerticalAlignment="Center"/>
@@ -187,7 +240,7 @@
                                             <Grid ColumnDefinitions="*,Auto">
                                                 <TextBlock Text="{Binding Description}" FontSize="13" FontWeight="SemiBold"
                                                            Foreground="#E8E9F0" TextWrapping="Wrap"/>
-                                                <Border Grid.Column="1" CornerRadius="100" Padding="10,3" Margin="10,0,0,0"
+                                                <Border Grid.Column="1" CornerRadius="100" Padding="8,3" Margin="10,0,0,0"
                                                         VerticalAlignment="Top"
                                                         Background="{Binding Severity, Converter={StaticResource AnomalySeverityToColorConverter}}">
                                                     <TextBlock Text="{Binding Severity}" FontSize="11" FontWeight="Medium" Foreground="White"/>
@@ -214,21 +267,23 @@
             <Border Background="#1D2338" CornerRadius="16" Padding="20"
                     BorderBrush="#3D4563" BorderThickness="1"
                     IsVisible="{Binding HasData}">
-                <StackPanel Spacing="12">
+                <StackPanel>
                     <Grid ColumnDefinitions="*,Auto">
                         <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
                             <TextBlock Text="Event Correlations" FontSize="14" FontWeight="SemiBold"
-                                       Foreground="#E8E9F0" LetterSpacing="-0.3"/>
-                            <Border Background="#1A2744" CornerRadius="100" Padding="10,3"
+                                       Foreground="#E8E9F0" LetterSpacing="-0.15"/>
+                            <Border Background="#1A2744" CornerRadius="100" Padding="8,3"
                                     BorderBrush="#3D4563" BorderThickness="1"
                                     VerticalAlignment="Center" IsVisible="{Binding HasCorrelations}">
                                 <TextBlock Text="{Binding CorrelationCount, StringFormat='{}{0} groups'}"
-                                           FontSize="12" FontWeight="Medium" Foreground="#60A5FA"/>
+                                           FontSize="11" FontWeight="Medium" Foreground="#60A5FA"/>
                             </Border>
                         </StackPanel>
                     </Grid>
+                    <Border Height="1" Background="#3D4563" Margin="0,12,0,12"/>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10" IsVisible="{Binding NoCorrelations}">
+                    <StackPanel Orientation="Horizontal" Spacing="10" IsVisible="{Binding NoCorrelations}"
+                                Margin="0,8,0,8">
                         <TextBlock Text="○" FontSize="16" Foreground="#585E72" VerticalAlignment="Center"/>
                         <TextBlock Text="No event correlations detected."
                                    FontSize="13" Foreground="#767C96" VerticalAlignment="Center"/>
@@ -247,7 +302,7 @@
                                                     <StackPanel Orientation="Horizontal" Spacing="8">
                                                         <TextBlock Text="{Binding Name}" FontSize="13" FontWeight="SemiBold"
                                                                    Foreground="#E8E9F0" VerticalAlignment="Center"/>
-                                                        <Border CornerRadius="100" Padding="10,3" VerticalAlignment="Center"
+                                                        <Border CornerRadius="100" Padding="8,3" VerticalAlignment="Center"
                                                                 Background="{Binding CorrelationType, Converter={StaticResource CorrelationTypeToColorConverter}}">
                                                             <TextBlock Text="{Binding CorrelationType}" FontSize="11" FontWeight="Medium" Foreground="White"/>
                                                         </Border>

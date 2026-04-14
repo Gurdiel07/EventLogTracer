@@ -9,6 +9,19 @@
              x:DataType="vm:AlertsViewModel"
              FontFamily="Inter">
 
+    <UserControl.Styles>
+        <Style Selector="Border.rule-card">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.15"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Border.rule-card:pointerover">
+            <Setter Property="BorderBrush" Value="#2A3A60"/>
+        </Style>
+    </UserControl.Styles>
+
     <Grid ColumnDefinitions="*,400">
 
         <!-- Rules list -->
@@ -35,7 +48,7 @@
                 <Border IsVisible="{Binding NoRules}"
                         Background="#1D2338" CornerRadius="20"
                         BorderBrush="#3D4563" BorderThickness="1"
-                        Padding="32">
+                        Padding="32,16">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
                         <TextBlock Text="🔔" FontSize="36" HorizontalAlignment="Center"/>
                         <TextBlock Text="No alert rules configured"
@@ -49,7 +62,8 @@
                     <ItemsControl x:CompileBindings="False" ItemsSource="{Binding AlertRules}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="#1D2338" CornerRadius="12" Padding="14"
+                                <Border Classes="rule-card"
+                                        Background="#1D2338" CornerRadius="12" Padding="14"
                                         Margin="0,0,0,8" BorderBrush="#3D4563" BorderThickness="1">
                                     <Grid RowDefinitions="Auto,Auto,Auto">
 
@@ -58,19 +72,21 @@
                                                 <TextBlock Text="{Binding Name}"
                                                            FontSize="14" FontWeight="SemiBold"
                                                            Foreground="#E8E9F0" VerticalAlignment="Center"/>
+                                                <!-- Notification type pill -->
                                                 <Border Background="{Binding NotificationType, Converter={StaticResource NotificationTypeToColorConverter}}"
-                                                        CornerRadius="100" Padding="6,2">
-                                                    <TextBlock Text="{Binding NotificationType}" FontSize="10" FontWeight="SemiBold" Foreground="White"/>
+                                                        CornerRadius="100" Padding="8,3" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding NotificationType}" FontSize="11" FontWeight="Medium" Foreground="White"/>
                                                 </Border>
-                                                <Border Background="#15391A" CornerRadius="100" Padding="6,2"
+                                                <!-- Enabled/Disabled pill -->
+                                                <Border Background="#15391A" CornerRadius="100" Padding="8,3"
                                                         BorderBrush="#1E4A22" BorderThickness="1"
-                                                        IsVisible="{Binding IsEnabled}">
-                                                    <TextBlock Text="ON" FontSize="10" FontWeight="SemiBold" Foreground="#4ADE80"/>
+                                                        IsVisible="{Binding IsEnabled}" VerticalAlignment="Center">
+                                                    <TextBlock Text="ON" FontSize="11" FontWeight="Medium" Foreground="#4ADE80"/>
                                                 </Border>
-                                                <Border Background="#2A2A2A" CornerRadius="100" Padding="6,2"
+                                                <Border Background="#2A2A2A" CornerRadius="100" Padding="8,3"
                                                         BorderBrush="#3D3D3D" BorderThickness="1"
-                                                        IsVisible="{Binding !IsEnabled}">
-                                                    <TextBlock Text="OFF" FontSize="10" FontWeight="SemiBold" Foreground="#767C96"/>
+                                                        IsVisible="{Binding !IsEnabled}" VerticalAlignment="Center">
+                                                    <TextBlock Text="OFF" FontSize="11" FontWeight="Medium" Foreground="#767C96"/>
                                                 </Border>
                                             </StackPanel>
 
@@ -128,61 +144,62 @@
 
                     <TextBlock Text="{Binding EditPanelTitle}"
                                FontSize="20" FontWeight="Bold" Foreground="#E8E9F0" LetterSpacing="-0.5"/>
+                    <Border Height="1" Background="#3D4563" Margin="0,-4,0,0"/>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Rule Name" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Rule Name" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <TextBox Text="{Binding EditName}" Watermark="e.g. Critical security events"/>
                     </StackPanel>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Status" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Status" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <ToggleSwitch IsChecked="{Binding EditIsEnabled}"
                                       OnContent="Enabled" OffContent="Disabled"
                                       Foreground="#E8E9F0"/>
                     </StackPanel>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Notification Type" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Notification Type" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <ComboBox x:CompileBindings="False"
                                   ItemsSource="{Binding NotificationTypeOptions}"
                                   SelectedItem="{Binding EditNotificationType}"
                                   HorizontalAlignment="Stretch"/>
                     </StackPanel>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Notification Target" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Notification Target" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <TextBox Text="{Binding EditNotificationTarget}"
                                  Watermark="{Binding EditNotificationTargetWatermark}"/>
                     </StackPanel>
 
-                    <Border Height="1" Background="#3D4563" Margin="0,8"/>
+                    <Border Height="1" Background="#3D4563" Margin="0,4"/>
                     <TextBlock Text="FILTER CRITERIA" FontSize="11" FontWeight="SemiBold"
                                Foreground="#767C96" LetterSpacing="2"/>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Event Levels" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Event Levels" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <TextBox Text="{Binding EditFilterLevels}" Watermark="e.g. Error, Critical"/>
                         <TextBlock Text="Comma-separated: Verbose, Information, Warning, Error, Critical"
-                                   FontSize="10" Foreground="#585E72"/>
+                                   FontSize="11" Foreground="#585E72"/>
                     </StackPanel>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Sources" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Sources" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <TextBox Text="{Binding EditFilterSources}" Watermark="e.g. DCOM, SecurityAuditing"/>
                     </StackPanel>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Log Names" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Log Names" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <TextBox Text="{Binding EditFilterLogNames}" Watermark="e.g. Security, System"/>
                     </StackPanel>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Event IDs" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Event IDs" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <TextBox Text="{Binding EditFilterEventIds}" Watermark="e.g. 4625, 4648"/>
                     </StackPanel>
 
-                    <StackPanel Spacing="4">
-                        <TextBlock Text="Message Contains" FontSize="12" Foreground="#767C96"/>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Message Contains" FontSize="13" FontWeight="Medium" Foreground="#9BA2BE"/>
                         <TextBox Text="{Binding EditFilterSearchText}" Watermark="Text to match in the event message"/>
                     </StackPanel>
 

@@ -160,7 +160,7 @@
              DATAGRID
              ═══════════════════════════════════════════════════════ -->
         <Style Selector="DataGridColumnHeader">
-            <Setter Property="Background"    Value="#0F1320"/>
+            <Setter Property="Background"    Value="#2F3650"/>
             <Setter Property="Foreground"    Value="#767C96"/>
             <Setter Property="FontSize"      Value="11"/>
             <Setter Property="FontWeight"    Value="Medium"/>
@@ -171,10 +171,22 @@
         <Style Selector="DataGridRow">
             <Setter Property="FontSize" Value="13"/>
         </Style>
+        <Style Selector="DataGridRow:pointerover">
+            <Setter Property="Background" Value="#262C44"/>
+        </Style>
         <Style Selector="DataGrid">
             <Setter Property="Background"           Value="#151A2E"/>
             <Setter Property="BorderBrush"          Value="#3D4563"/>
             <Setter Property="HorizontalGridLinesBrush" Value="#1D2338"/>
+        </Style>
+
+        <!-- ═══════════════════════════════════════════════════════
+             CALENDARDATEPICKER
+             ═══════════════════════════════════════════════════════ -->
+        <Style Selector="CalendarDatePicker">
+            <Setter Property="Background"  Value="#1F2539"/>
+            <Setter Property="BorderBrush" Value="#464E6E"/>
+            <Setter Property="Foreground"  Value="#E8E9F0"/>
         </Style>
 
         <!-- ═══════════════════════════════════════════════════════
