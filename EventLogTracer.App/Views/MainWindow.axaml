@@ -11,11 +11,10 @@
         Width="1280" Height="800"
         MinWidth="900" MinHeight="600"
         WindowStartupLocation="CenterScreen"
-        Background="#101318"
+        Background="#0C111B"
         KeyDown="OnWindowKeyDown">
 
     <Window.Styles>
-        <!-- Sidebar nav button style -->
         <Style Selector="Button.nav-btn">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#E8E9ED"/>
@@ -26,7 +25,7 @@
             <Setter Property="Margin" Value="4,2"/>
         </Style>
         <Style Selector="Button.nav-btn:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#242838"/>
+            <Setter Property="Background" Value="#131A28"/>
         </Style>
         <Style Selector="Button.nav-btn.active">
             <Setter Property="Foreground" Value="#FFFFFF"/>
@@ -41,31 +40,32 @@
 
     <Grid RowDefinitions="*,Auto">
 
-        <!-- ═══════════════════════════════════════════════════════
-             Main content: sidebar + page area
-             ═══════════════════════════════════════════════════════ -->
         <Grid Grid.Row="0" ColumnDefinitions="220,*">
 
-            <!-- ── Sidebar ── -->
+            <!-- ── Sidebar with gradient ── -->
             <Border Grid.Column="0"
-                    Background="#12151C"
-                    BorderBrush="#2E3348"
+                    BorderBrush="#1E3A5F"
                     BorderThickness="0,0,1,0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#0B1628" Offset="0"/>
+                        <GradientStop Color="#0F1D32" Offset="0.5"/>
+                        <GradientStop Color="#0B1628" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <DockPanel>
 
-                    <!-- App header -->
                     <StackPanel DockPanel.Dock="Top" Margin="16,20,16,16">
                         <TextBlock Text="⚡ Event Log Tracer"
                                    FontSize="16"
                                    FontWeight="SemiBold"
-                                   Foreground="#FFFFFF"/>
+                                   Foreground="#F0F4FF"/>
                         <TextBlock Text="Real-time Windows Event Analysis"
                                    FontSize="11"
-                                   Foreground="#6B6F82"
+                                   Foreground="#4A5670"
                                    Margin="0,4,0,0"/>
                     </StackPanel>
 
-                    <!-- Nav items -->
                     <StackPanel DockPanel.Dock="Top" Margin="8,0">
 
                         <Button Classes="nav-btn"
@@ -85,7 +85,7 @@
                             <StackPanel Orientation="Horizontal" Spacing="12">
                                 <TextBlock Text="📋" FontSize="14"/>
                                 <TextBlock Text="Event Viewer"/>
-                                <Border Background="#2E3348"
+                                <Border Background="#1A2744"
                                         CornerRadius="9"
                                         Padding="6,1"
                                         VerticalAlignment="Center">
@@ -128,9 +128,8 @@
 
                     </StackPanel>
 
-                    <!-- Settings at the bottom -->
                     <StackPanel DockPanel.Dock="Bottom" Margin="8,0,8,12">
-                        <Separator Margin="4,8" Background="#2E3348"/>
+                        <Separator Margin="4,8" Background="#1E3A5F"/>
                         <Button Classes="nav-btn"
                                 Classes.active="{Binding IsSettingsSelected}"
                                 Command="{Binding NavigateToCommand}"
@@ -146,7 +145,7 @@
             </Border>
 
             <!-- ── Content area ── -->
-            <Border Grid.Column="1" Background="#101318">
+            <Border Grid.Column="1" Background="#0C111B">
                 <ContentControl Content="{Binding CurrentPage}">
                     <ContentControl.DataTemplates>
                         <DataTemplate DataType="vm:DashboardViewModel">
@@ -173,39 +172,34 @@
 
         </Grid>
 
-        <!-- ═══════════════════════════════════════════════════════
-             Status bar
-             ═══════════════════════════════════════════════════════ -->
+        <!-- ═══ Status bar ═══ -->
         <Border Grid.Row="1"
-                Background="#0B0D14"
-                BorderBrush="#2E3348"
+                Background="#080C16"
+                BorderBrush="#1E3A5F"
                 BorderThickness="0,1,0,0"
                 Padding="16,6">
             <Grid ColumnDefinitions="Auto,*,Auto,Auto">
 
-                <!-- Monitoring indicator (green=active, red=inactive) -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="8">
                     <Panel Width="8" Height="8" VerticalAlignment="Center">
                         <Ellipse Width="8" Height="8" Fill="#00C851" IsVisible="{Binding IsMonitoring}"/>
                         <Ellipse Width="8" Height="8" Fill="#FF4444" IsVisible="{Binding !IsMonitoring}"/>
                     </Panel>
                     <TextBlock Text="{Binding StatusMessage}"
-                               Foreground="#A0A4B8"
+                               Foreground="#8899B4"
                                FontSize="12"
                                VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <!-- Last event info (centre) -->
                 <TextBlock Grid.Column="1"
                            Text="{Binding LastEventInfo}"
-                           Foreground="#6B6F82"
+                           Foreground="#4A5670"
                            FontSize="11"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
 
-                <!-- Event count -->
                 <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6" Margin="0,0,16,0">
-                    <TextBlock Text="Events:" Foreground="#6B6F82" FontSize="12" VerticalAlignment="Center"/>
+                    <TextBlock Text="Events:" Foreground="#4A5670" FontSize="12" VerticalAlignment="Center"/>
                     <TextBlock Text="{Binding TotalEventCount}"
                                Foreground="#E8E9ED"
                                FontSize="12"
@@ -213,7 +207,6 @@
                                VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <!-- Toggle monitoring button -->
                 <Button Grid.Column="3"
                         Content="{Binding ToggleButtonText}"
                         Command="{Binding ToggleMonitoringCommand}"

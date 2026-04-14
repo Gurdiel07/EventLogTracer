@@ -14,69 +14,69 @@
             <TextBlock Text="Settings"
                        FontSize="28"
                        FontWeight="Bold"
-                       Foreground="#FFFFFF"
+                       Foreground="#F0F4FF"
                        Margin="0,0,0,8"/>
 
             <!-- ════════════════════════════════════════════════════════════
                  SECTION 1 — Export Data
                  ════════════════════════════════════════════════════════════ -->
-            <Border Background="#181C26"
+            <Border Background="#0F1520"
                     CornerRadius="12"
                     Padding="20"
-                    BorderBrush="#2E3348"
-                    BorderThickness="1">
+                    BorderBrush="#1A2744"
+                    BorderThickness="3,1,1,1">
                 <StackPanel Spacing="16">
 
                     <TextBlock Text="Export Events"
                                FontSize="18"
                                FontWeight="SemiBold"
-                               Foreground="#FFFFFF"/>
+                               Foreground="#F0F4FF"/>
 
                     <!-- Form rows -->
                     <StackPanel Spacing="12">
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="Format" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="Format" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <ComboBox Grid.Column="1" x:CompileBindings="False"
                                       ItemsSource="{Binding FormatOptions}"
                                       SelectedItem="{Binding ExportFormat}"
                                       HorizontalAlignment="Left" Width="180"
-                                      Background="#242838" Foreground="#FFFFFF" CornerRadius="4"/>
+                                      Background="#131A28" Foreground="#FFFFFF" CornerRadius="4"/>
                         </Grid>
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="From Date" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="From Date" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <CalendarDatePicker Grid.Column="1"
                                                SelectedDate="{Binding ExportDateFrom}"
                                                Watermark="No start filter"
                                                HorizontalAlignment="Left" Width="200"
-                                               Background="#242838" Foreground="#FFFFFF"/>
+                                               Background="#131A28" Foreground="#FFFFFF"/>
                         </Grid>
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="To Date" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="To Date" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <CalendarDatePicker Grid.Column="1"
                                                SelectedDate="{Binding ExportDateTo}"
                                                Watermark="No end filter"
                                                HorizontalAlignment="Left" Width="200"
-                                               Background="#242838" Foreground="#FFFFFF"/>
+                                               Background="#131A28" Foreground="#FFFFFF"/>
                         </Grid>
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="Level Filter" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="Level Filter" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <ComboBox Grid.Column="1" x:CompileBindings="False"
                                       ItemsSource="{Binding LevelFilterOptions}"
                                       SelectedItem="{Binding ExportLevelFilter}"
                                       HorizontalAlignment="Left" Width="180"
-                                      Background="#242838" Foreground="#FFFFFF" CornerRadius="4"/>
+                                      Background="#131A28" Foreground="#FFFFFF" CornerRadius="4"/>
                         </Grid>
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="Output Folder" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="Output Folder" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Text="{Binding ExportPath}"
-                                     Background="#242838" Foreground="#FFFFFF"
+                                     Background="#131A28" Foreground="#FFFFFF"
                                      CornerRadius="4" Padding="10,7"/>
                         </Grid>
                     </StackPanel>
 
                     <!-- Preview count -->
                     <TextBlock Text="{Binding ExportEventCount, StringFormat='~{0} events will be exported'}"
-                               Foreground="#A0A4B8"
+                               Foreground="#8899B4"
                                FontSize="12"
                                IsVisible="{Binding ExportEventCount,
                                            Converter={x:Static ObjectConverters.IsNotNull}}"/>
@@ -87,7 +87,9 @@
                                 Command="{Binding PreviewExportCommand}"
                                 Padding="14,8"
                                 CornerRadius="4"
-                                Background="#3A3F58"
+                                Background="#131A28"
+                                BorderBrush="#1A2744"
+                                BorderThickness="1"
                                 Foreground="#E8E9ED"/>
                         <Button Content="Export"
                                 Command="{Binding ExecuteExportCommand}"
@@ -100,7 +102,9 @@
                                 Command="{Binding OpenExportFolderCommand}"
                                 Padding="14,8"
                                 CornerRadius="4"
-                                Background="#3A3F58"
+                                Background="#131A28"
+                                BorderBrush="#1A2744"
+                                BorderThickness="1"
                                 Foreground="#E8E9ED"/>
                     </StackPanel>
 
@@ -124,43 +128,43 @@
             <!-- ════════════════════════════════════════════════════════════
                  SECTION 2 — Database Management
                  ════════════════════════════════════════════════════════════ -->
-            <Border Background="#181C26"
+            <Border Background="#0F1520"
                     CornerRadius="12"
                     Padding="20"
-                    BorderBrush="#2E3348"
-                    BorderThickness="1">
+                    BorderBrush="#1A2744"
+                    BorderThickness="3,1,1,1">
                 <StackPanel Spacing="16">
 
                     <TextBlock Text="Database Management"
                                FontSize="18"
                                FontWeight="SemiBold"
-                               Foreground="#FFFFFF"/>
+                               Foreground="#F0F4FF"/>
 
                     <!-- Stats rows -->
                     <StackPanel Spacing="10">
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="Database Path" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="Database Path" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <TextBox Grid.Column="1" Text="{Binding DatabasePath}" IsReadOnly="True"
-                                     Background="#1E2230" Foreground="#A0A4B8" CornerRadius="4"
+                                     Background="#131A28" Foreground="#A0A4B8" CornerRadius="4"
                                      Padding="8,5" FontSize="11" FontFamily="Consolas, Menlo, monospace"/>
                         </Grid>
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="Database Size" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="Database Size" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="1" Text="{Binding DatabaseSize}"
                                        Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
                         </Grid>
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="Total Events" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="Total Events" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="1" Text="{Binding TotalEventsInDb, StringFormat='{}{0:N0}'}"
                                        Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
                         </Grid>
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="Saved Queries" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="Saved Queries" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="1" Text="{Binding TotalSavedQueries}"
                                        Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
                         </Grid>
                         <Grid ColumnDefinitions="160,*">
-                            <TextBlock Text="Alert Rules" Foreground="#A0A4B8" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text="Alert Rules" Foreground="#7B8CA8" FontSize="13" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="1" Text="{Binding TotalAlertRules}"
                                        Foreground="#FFFFFF" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
                         </Grid>
@@ -172,13 +176,17 @@
                                 Command="{Binding RefreshStatsCommand}"
                                 Padding="14,8"
                                 CornerRadius="4"
-                                Background="#3A3F58"
+                                Background="#131A28"
+                                BorderBrush="#1A2744"
+                                BorderThickness="1"
                                 Foreground="#E8E9ED"/>
                         <Button Content="Compact Database"
                                 Command="{Binding VacuumDatabaseCommand}"
                                 Padding="14,8"
                                 CornerRadius="4"
-                                Background="#3A3F58"
+                                Background="#131A28"
+                                BorderBrush="#1A2744"
+                                BorderThickness="1"
                                 Foreground="#E8E9ED"
                                 ToolTip.Tip="Run VACUUM to reclaim unused space"/>
                         <Button Content="Clear Old Events (30d)"
@@ -196,26 +204,26 @@
             <!-- ════════════════════════════════════════════════════════════
                  SECTION 3 — About
                  ════════════════════════════════════════════════════════════ -->
-            <Border Background="#181C26"
+            <Border Background="#0F1520"
                     CornerRadius="12"
                     Padding="20"
-                    BorderBrush="#2E3348"
-                    BorderThickness="1">
+                    BorderBrush="#1A2744"
+                    BorderThickness="3,1,1,1">
                 <StackPanel Spacing="12">
 
                     <TextBlock Text="About"
                                FontSize="18"
                                FontWeight="SemiBold"
-                               Foreground="#FFFFFF"/>
+                               Foreground="#F0F4FF"/>
 
                     <StackPanel Spacing="4">
                         <TextBlock Text="Event Log Tracer"
                                    FontSize="16"
                                    FontWeight="Bold"
-                                   Foreground="#FFFFFF"/>
+                                   Foreground="#F0F4FF"/>
                         <TextBlock Text="{Binding AppVersion, StringFormat='Version {0}'}"
                                    FontSize="13"
-                                   Foreground="#A0A4B8"/>
+                                   Foreground="#8899B4"/>
                     </StackPanel>
 
                     <TextBlock Text="Windows Event Log analysis, monitoring, and alerting tool."
@@ -223,24 +231,24 @@
                                FontSize="13"
                                TextWrapping="Wrap"/>
 
-                    <Border Height="1" Background="#2E3348" Margin="0,4"/>
+                    <Border Height="1" Background="#1E3A5F" Margin="0,4"/>
 
                     <StackPanel Spacing="8">
                         <Grid ColumnDefinitions="140,*">
-                            <TextBlock Text="Framework" Foreground="#6B6F82" FontSize="12"/>
-                            <TextBlock Grid.Column="1" Text=".NET 8 + Avalonia UI 11" Foreground="#A0A4B8" FontSize="12"/>
+                            <TextBlock Text="Framework" Foreground="#4A5670" FontSize="12"/>
+                            <TextBlock Grid.Column="1" Text=".NET 8 + Avalonia UI 11" Foreground="#8899B4" FontSize="12"/>
                         </Grid>
                         <Grid ColumnDefinitions="140,*">
-                            <TextBlock Text="MVVM" Foreground="#6B6F82" FontSize="12"/>
-                            <TextBlock Grid.Column="1" Text="CommunityToolkit.Mvvm" Foreground="#A0A4B8" FontSize="12"/>
+                            <TextBlock Text="MVVM" Foreground="#4A5670" FontSize="12"/>
+                            <TextBlock Grid.Column="1" Text="CommunityToolkit.Mvvm" Foreground="#8899B4" FontSize="12"/>
                         </Grid>
                         <Grid ColumnDefinitions="140,*">
-                            <TextBlock Text="Database" Foreground="#6B6F82" FontSize="12"/>
-                            <TextBlock Grid.Column="1" Text="EF Core 8 + SQLite" Foreground="#A0A4B8" FontSize="12"/>
+                            <TextBlock Text="Database" Foreground="#4A5670" FontSize="12"/>
+                            <TextBlock Grid.Column="1" Text="EF Core 8 + SQLite" Foreground="#8899B4" FontSize="12"/>
                         </Grid>
                         <Grid ColumnDefinitions="140,*">
-                            <TextBlock Text="Charts" Foreground="#6B6F82" FontSize="12"/>
-                            <TextBlock Grid.Column="1" Text="LiveCharts2 (SkiaSharp)" Foreground="#A0A4B8" FontSize="12"/>
+                            <TextBlock Text="Charts" Foreground="#4A5670" FontSize="12"/>
+                            <TextBlock Grid.Column="1" Text="LiveCharts2 (SkiaSharp)" Foreground="#8899B4" FontSize="12"/>
                         </Grid>
                     </StackPanel>
 

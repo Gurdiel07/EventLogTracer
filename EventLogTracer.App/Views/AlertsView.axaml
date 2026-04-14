@@ -24,10 +24,10 @@
                     <TextBlock Text="Alerts"
                                FontSize="28"
                                FontWeight="Bold"
-                               Foreground="#FFFFFF"/>
+                               Foreground="#F0F4FF"/>
                     <TextBlock Text="Configure rules to get notified when specific events occur"
                                FontSize="13"
-                               Foreground="#A0A4B8"/>
+                               Foreground="#7B8CA8"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                             Orientation="Horizontal"
@@ -53,7 +53,7 @@
             <Grid Grid.Row="1">
                 <!-- Empty state -->
                 <Border IsVisible="{Binding NoRules}"
-                        Background="#1E2230"
+                        Background="#0F1520"
                         CornerRadius="12"
                         Padding="32">
                     <StackPanel HorizontalAlignment="Center"
@@ -69,7 +69,7 @@
                                    HorizontalAlignment="Center"/>
                         <TextBlock Text="Create one to get notified when specific events occur."
                                    FontSize="13"
-                                   Foreground="#6B6F82"
+                                   Foreground="#4A5670"
                                    HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>
@@ -80,12 +80,12 @@
                                   ItemsSource="{Binding AlertRules}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Border Background="#181C26"
+                                <Border Background="#0F1520"
                                         CornerRadius="8"
                                         Padding="14"
                                         Margin="0,0,0,8"
-                                        BorderBrush="#3A3F58"
-                                        BorderThickness="1">
+                                        BorderBrush="#1A2744"
+                                        BorderThickness="3,1,1,1">
                                     <Grid RowDefinitions="Auto,Auto,Auto">
 
                                         <!-- Row 0: Name + badges + actions -->
@@ -131,7 +131,7 @@
                                                         CommandParameter="{Binding}"
                                                         Padding="8,4"
                                                         FontSize="12"
-                                                        Background="#3A3F58"
+                                                        Background="#131A28"
                                                         Foreground="#E8E9ED"
                                                         CornerRadius="4"/>
                                                 <Button IsVisible="{Binding !IsEnabled}"
@@ -147,7 +147,7 @@
                                                         CommandParameter="{Binding}"
                                                         Padding="8,4"
                                                         FontSize="12"
-                                                        Background="#3A3F58"
+                                                        Background="#131A28"
                                                         Foreground="#E8E9ED"
                                                         CornerRadius="4"
                                                         Content="Edit"/>
@@ -166,7 +166,7 @@
                                         <TextBlock Grid.Row="1"
                                                    Text="{Binding NotificationTarget}"
                                                    FontSize="12"
-                                                   Foreground="#A0A4B8"
+                                                   Foreground="#8899B4"
                                                    Margin="0,4,0,0"
                                                    TextTrimming="CharacterEllipsis"
                                                    IsVisible="{Binding NotificationTarget, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
@@ -175,7 +175,7 @@
                                         <TextBlock Grid.Row="2"
                                                    Text="{Binding Filter, Converter={StaticResource FilterDescriptionConverter}}"
                                                    FontSize="11"
-                                                   Foreground="#6B6F82"
+                                                   Foreground="#4A5670"
                                                    Margin="0,4,0,0"
                                                    TextTrimming="CharacterEllipsis"/>
 
@@ -192,8 +192,8 @@
              COLUMN 1 — Edit panel
              ══════════════════════════════════════════════════════════════════ -->
         <Border Grid.Column="1"
-                Background="#12151C"
-                BorderBrush="#2E3348"
+                Background="#0F1520"
+                BorderBrush="#1E3A5F"
                 BorderThickness="1,0,0,0"
                 IsVisible="{Binding IsEditing}">
             <ScrollViewer Padding="24">
@@ -203,23 +203,23 @@
                     <TextBlock Text="{Binding EditPanelTitle}"
                                FontSize="20"
                                FontWeight="Bold"
-                               Foreground="#FFFFFF"/>
+                               Foreground="#F0F4FF"/>
 
                     <!-- Name -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Rule Name" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Rule Name" FontSize="12" Foreground="#7B8CA8"/>
                         <TextBox Text="{Binding EditName}"
                                  Watermark="e.g. Critical security events"
-                                 Background="#242838"
+                                 Background="#131A28"
                                  Foreground="#FFFFFF"
-                                 BorderBrush="#3A3F58"
+                                 BorderBrush="#1A2744"
                                  Padding="10,8"
                                  CornerRadius="4"/>
                     </StackPanel>
 
                     <!-- Enabled toggle -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Status" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Status" FontSize="12" Foreground="#7B8CA8"/>
                         <ToggleSwitch IsChecked="{Binding EditIsEnabled}"
                                       OnContent="Enabled"
                                       OffContent="Disabled"
@@ -228,108 +228,108 @@
 
                     <!-- Notification Type -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Notification Type" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Notification Type" FontSize="12" Foreground="#7B8CA8"/>
                         <ComboBox x:CompileBindings="False"
                                   ItemsSource="{Binding NotificationTypeOptions}"
                                   SelectedItem="{Binding EditNotificationType}"
-                                  Background="#242838"
+                                  Background="#131A28"
                                   Foreground="#E8E9ED"
-                                  BorderBrush="#3A3F58"
+                                  BorderBrush="#1A2744"
                                   HorizontalAlignment="Stretch"
                                   Padding="10,8"/>
                     </StackPanel>
 
                     <!-- Notification Target -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Notification Target" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Notification Target" FontSize="12" Foreground="#7B8CA8"/>
                         <TextBox Text="{Binding EditNotificationTarget}"
                                  Watermark="{Binding EditNotificationTargetWatermark}"
-                                 Background="#242838"
+                                 Background="#131A28"
                                  Foreground="#FFFFFF"
-                                 BorderBrush="#3A3F58"
+                                 BorderBrush="#1A2744"
                                  Padding="10,8"
                                  CornerRadius="4"/>
                     </StackPanel>
 
                     <!-- Separator -->
-                    <Border Height="1" Background="#2E3348" Margin="0,8"/>
+                    <Border Height="1" Background="#1E3A5F" Margin="0,8"/>
                     <TextBlock Text="FILTER CRITERIA"
                                FontSize="11"
                                FontWeight="SemiBold"
-                               Foreground="#6B6F82"
+                               Foreground="#4A5670"
                                LetterSpacing="1.5"/>
 
                     <!-- Event Levels -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Event Levels" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Event Levels" FontSize="12" Foreground="#7B8CA8"/>
                         <TextBox Text="{Binding EditFilterLevels}"
                                  Watermark="e.g. Error, Critical"
-                                 Background="#242838"
+                                 Background="#131A28"
                                  Foreground="#FFFFFF"
-                                 BorderBrush="#3A3F58"
+                                 BorderBrush="#1A2744"
                                  Padding="10,8"
                                  CornerRadius="4"/>
                         <TextBlock Text="Comma-separated: Verbose, Information, Warning, Error, Critical"
                                    FontSize="10"
-                                   Foreground="#6B6F82"/>
+                                   Foreground="#4A5670"/>
                     </StackPanel>
 
                     <!-- Sources -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Sources" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Sources" FontSize="12" Foreground="#7B8CA8"/>
                         <TextBox Text="{Binding EditFilterSources}"
                                  Watermark="e.g. DCOM, SecurityAuditing"
-                                 Background="#242838"
+                                 Background="#131A28"
                                  Foreground="#FFFFFF"
-                                 BorderBrush="#3A3F58"
+                                 BorderBrush="#1A2744"
                                  Padding="10,8"
                                  CornerRadius="4"/>
                     </StackPanel>
 
                     <!-- Log Names -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Log Names" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Log Names" FontSize="12" Foreground="#7B8CA8"/>
                         <TextBox Text="{Binding EditFilterLogNames}"
                                  Watermark="e.g. Security, System"
-                                 Background="#242838"
+                                 Background="#131A28"
                                  Foreground="#FFFFFF"
-                                 BorderBrush="#3A3F58"
+                                 BorderBrush="#1A2744"
                                  Padding="10,8"
                                  CornerRadius="4"/>
                     </StackPanel>
 
                     <!-- Event IDs -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Event IDs" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Event IDs" FontSize="12" Foreground="#7B8CA8"/>
                         <TextBox Text="{Binding EditFilterEventIds}"
                                  Watermark="e.g. 4625, 4648"
-                                 Background="#242838"
+                                 Background="#131A28"
                                  Foreground="#FFFFFF"
-                                 BorderBrush="#3A3F58"
+                                 BorderBrush="#1A2744"
                                  Padding="10,8"
                                  CornerRadius="4"/>
                     </StackPanel>
 
                     <!-- Search Text -->
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Message Contains" FontSize="12" Foreground="#A0A4B8"/>
+                        <TextBlock Text="Message Contains" FontSize="12" Foreground="#7B8CA8"/>
                         <TextBox Text="{Binding EditFilterSearchText}"
                                  Watermark="Text to match in the event message"
-                                 Background="#242838"
+                                 Background="#131A28"
                                  Foreground="#FFFFFF"
-                                 BorderBrush="#3A3F58"
+                                 BorderBrush="#1A2744"
                                  Padding="10,8"
                                  CornerRadius="4"/>
                     </StackPanel>
 
                     <!-- Action buttons -->
-                    <Border Height="1" Background="#2E3348" Margin="0,4"/>
+                    <Border Height="1" Background="#1E3A5F" Margin="0,4"/>
                     <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
                         <Button Content="Cancel"
                                 Command="{Binding CancelEditCommand}"
                                 Padding="14,9"
                                 CornerRadius="4"
-                                Background="#3A3F58"
+                                Background="#131A28"
                                 Foreground="#E8E9ED"/>
                         <Button Content="Save Rule"
                                 Command="{Binding SaveRuleCommand}"

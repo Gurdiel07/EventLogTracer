@@ -16,10 +16,10 @@
             <TextBlock Text="Timeline"
                        FontSize="28"
                        FontWeight="Bold"
-                       Foreground="#FFFFFF"/>
+                       Foreground="#F0F4FF"/>
             <TextBlock Text="Interactive event visualization with zoom and navigation"
                        FontSize="12"
-                       Foreground="#A0A4B8"
+                       Foreground="#7B8CA8"
                        Margin="0,4,0,0"/>
         </StackPanel>
 
@@ -58,21 +58,21 @@
                         Margin="4,0,0,0"/>
 
                 <StackPanel Orientation="Horizontal" Spacing="6" Margin="12,0,0,0">
-                    <TextBlock Text="Level:" Foreground="#A0A4B8" FontSize="12" VerticalAlignment="Center"/>
+                    <TextBlock Text="Level:" Foreground="#7B8CA8" FontSize="12" VerticalAlignment="Center"/>
                     <ComboBox ItemsSource="{Binding LevelOptions}"
                               SelectedItem="{Binding SelectedLevel}"
                               Width="140"
-                              Background="#242838"
+                              Background="#131A28"
                               Foreground="#FFFFFF"
                               CornerRadius="4"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Spacing="6" Margin="12,0,0,0">
-                    <TextBlock Text="Log:" Foreground="#A0A4B8" FontSize="12" VerticalAlignment="Center"/>
+                    <TextBlock Text="Log:" Foreground="#7B8CA8" FontSize="12" VerticalAlignment="Center"/>
                     <ComboBox ItemsSource="{Binding LogNameOptions}"
                               SelectedItem="{Binding SelectedLogName}"
                               Width="170"
-                              Background="#242838"
+                              Background="#131A28"
                               Foreground="#FFFFFF"
                               CornerRadius="4"/>
                 </StackPanel>
@@ -87,19 +87,19 @@
             <WrapPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding TotalVisible, StringFormat='Showing {0} events |'}"
                            FontSize="12"
-                           Foreground="#A0A4B8"/>
+                           Foreground="#8899B4"/>
                 <TextBlock Text="{Binding VisibleRangeStart, StringFormat='{}{0:MMM dd HH:mm}'}"
                            FontSize="12"
-                           Foreground="#A0A4B8"/>
+                           Foreground="#8899B4"/>
                 <TextBlock Text=" - "
                            FontSize="12"
-                           Foreground="#A0A4B8"/>
+                           Foreground="#8899B4"/>
                 <TextBlock Text="{Binding VisibleRangeEnd, StringFormat='{}{0:MMM dd HH:mm}'}"
                            FontSize="12"
-                           Foreground="#A0A4B8"/>
+                           Foreground="#8899B4"/>
                 <TextBlock Text="{Binding ZoomLevel, StringFormat=' | Zoom {0:0.##}x'}"
                            FontSize="12"
-                           Foreground="#6B6F82"
+                           Foreground="#4A5670"
                            Margin="8,0,0,0"/>
             </WrapPanel>
 
@@ -111,8 +111,8 @@
 
         <!-- Chart -->
         <Border Grid.Row="2"
-                Background="#181C26"
-                BorderBrush="#2E3348"
+                Background="#0F1520"
+                BorderBrush="#1A2744"
                 BorderThickness="1"
                 CornerRadius="8"
                 Padding="12"
@@ -130,8 +130,8 @@
 
         <!-- Detail panel -->
         <Border Grid.Row="3"
-                Background="#12151C"
-                BorderBrush="#2E3348"
+                Background="#0F1520"
+                BorderBrush="#1E3A5F"
                 BorderThickness="0,1,0,0"
                 CornerRadius="0,0,8,8"
                 IsVisible="{Binding SelectedEventDetail, Converter={x:Static ObjectConverters.IsNotNull}}">
@@ -141,13 +141,13 @@
 
                     <WrapPanel Orientation="Horizontal">
                         <StackPanel Width="120" Margin="0,0,16,8">
-                            <TextBlock Text="Event ID" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="Event ID" FontSize="10" Foreground="#4A5670"/>
                             <TextBlock Text="{Binding SelectedEventDetail.EventId}"
                                        FontSize="15" FontWeight="SemiBold" Foreground="#FFFFFF"/>
                         </StackPanel>
 
                         <StackPanel Width="130" Margin="0,0,16,8">
-                            <TextBlock Text="Level" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="Level" FontSize="10" Foreground="#4A5670"/>
                             <Border CornerRadius="4" Padding="10,3" HorizontalAlignment="Left" Margin="0,2,0,0"
                                     x:CompileBindings="False"
                                     Background="{Binding SelectedEventDetail.Level,
@@ -159,13 +159,13 @@
                         </StackPanel>
 
                         <StackPanel MinWidth="200" Margin="0,0,16,8">
-                            <TextBlock Text="Source" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="Source" FontSize="10" Foreground="#4A5670"/>
                             <TextBlock Text="{Binding SelectedEventDetail.Source}"
                                        FontSize="13" Foreground="#E8E9ED"/>
                         </StackPanel>
 
                         <StackPanel Margin="0,0,16,8">
-                            <TextBlock Text="Time Created" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="Time Created" FontSize="10" Foreground="#4A5670"/>
                             <TextBlock Text="{Binding SelectedEventDetail.TimeCreated, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss.fff}'}"
                                        FontSize="13" Foreground="#E8E9ED"/>
                         </StackPanel>
@@ -173,27 +173,27 @@
 
                     <WrapPanel Orientation="Horizontal">
                         <StackPanel Width="120" Margin="0,0,16,8">
-                            <TextBlock Text="Log Name" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="Log Name" FontSize="10" Foreground="#4A5670"/>
                             <TextBlock Text="{Binding SelectedEventDetail.LogName}"
                                        FontSize="13" Foreground="#E8E9ED"/>
                         </StackPanel>
                         <StackPanel Width="160" Margin="0,0,16,8">
-                            <TextBlock Text="Machine" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="Machine" FontSize="10" Foreground="#4A5670"/>
                             <TextBlock Text="{Binding SelectedEventDetail.MachineName}"
                                        FontSize="13" Foreground="#E8E9ED"/>
                         </StackPanel>
                         <StackPanel Width="140" Margin="0,0,16,8">
-                            <TextBlock Text="Category" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="Category" FontSize="10" Foreground="#4A5670"/>
                             <TextBlock Text="{Binding SelectedEventDetail.Category, FallbackValue='-'}"
                                        FontSize="13" Foreground="#E8E9ED"/>
                         </StackPanel>
                         <StackPanel Width="180" Margin="0,0,16,8">
-                            <TextBlock Text="User ID" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="User ID" FontSize="10" Foreground="#4A5670"/>
                             <TextBlock Text="{Binding SelectedEventDetail.UserId, FallbackValue='-'}"
                                        FontSize="13" Foreground="#E8E9ED"/>
                         </StackPanel>
                         <StackPanel Margin="0,0,16,8">
-                            <TextBlock Text="Keywords" FontSize="10" Foreground="#6B6F82"/>
+                            <TextBlock Text="Keywords" FontSize="10" Foreground="#4A5670"/>
                             <TextBlock Text="{Binding SelectedEventDetail.Keywords, FallbackValue='-'}"
                                        FontSize="13" Foreground="#E8E9ED"/>
                         </StackPanel>
@@ -210,7 +210,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <Border Background="#242838" CornerRadius="10"
+                                    <Border Background="#131A28" CornerRadius="10"
                                             Padding="8,3" Margin="0,0,6,4">
                                         <StackPanel Orientation="Horizontal" Spacing="4">
                                             <TextBlock Text="{Binding}"
@@ -222,7 +222,7 @@
                                                     CommandParameter="{Binding}"
                                                     Background="Transparent"
                                                     BorderThickness="0"
-                                                    Foreground="#6B6F82"
+                                                    Foreground="#4A5670"
                                                     FontSize="9"
                                                     Padding="2,0"
                                                     Cursor="Hand"/>
@@ -238,7 +238,7 @@
                                      Width="160"
                                      FontSize="12"
                                      Padding="7,4"
-                                     Background="#242838"
+                                     Background="#131A28"
                                      Foreground="#FFFFFF"
                                      CornerRadius="4"/>
                             <Button Content="Add Tag"
@@ -252,9 +252,9 @@
                     </StackPanel>
 
                     <StackPanel Spacing="4">
-                        <TextBlock Text="Message" FontSize="10" Foreground="#6B6F82"/>
-                        <Border Background="#0E1118" CornerRadius="4" Padding="12,10"
-                                BorderBrush="#2E3348" BorderThickness="1">
+                        <TextBlock Text="Message" FontSize="10" Foreground="#4A5670"/>
+                        <Border Background="#080C16" CornerRadius="4" Padding="12,10"
+                                BorderBrush="#1A2744" BorderThickness="1">
                             <ScrollViewer MaxHeight="80" VerticalScrollBarVisibility="Auto">
                                 <TextBlock Text="{Binding SelectedEventDetail.Message}"
                                            TextWrapping="Wrap"
@@ -265,7 +265,7 @@
                         </Border>
                     </StackPanel>
 
-                    <Border Background="#1E2230" CornerRadius="8" Padding="12,10">
+                    <Border Background="#0C111B" CornerRadius="8" Padding="12,10">
                         <StackPanel Orientation="Horizontal" Spacing="10">
                             <Button Command="{Binding ToggleBookmarkCommand}"
                                     CommandParameter="{Binding SelectedEventDetail}"
@@ -281,7 +281,7 @@
                             <TextBox Text="{Binding SelectedEventDetail.BookmarkComment, Mode=TwoWay}"
                                      Watermark="Add a comment..."
                                      Width="320"
-                                     Background="#242838"
+                                     Background="#131A28"
                                      Foreground="#FFFFFF"
                                      CornerRadius="4"
                                      Padding="8,5"/>
